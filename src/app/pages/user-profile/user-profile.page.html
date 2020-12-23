@@ -21,7 +21,7 @@
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">First Name</ion-label>
+            <ion-label class="label" position="floating">First Name</ion-label>
             <ion-input type="text" [(ngModel)]="user.firstName" name="firstName"></ion-input>
           </ion-item>
         </ion-col>
@@ -29,7 +29,7 @@
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">Last Name</ion-label>
+            <ion-label class="label" position="floating">Last Name</ion-label>
             <ion-input type="text" [(ngModel)]="user.lastName" name="lastName"></ion-input>
           </ion-item>
         </ion-col>
@@ -37,7 +37,7 @@
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">Address</ion-label>
+            <ion-label class="label" position="floating">Address</ion-label>
             <ion-input type="text" [(ngModel)]="user.address" name="address"></ion-input>
           </ion-item>
         </ion-col>
@@ -45,7 +45,7 @@
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">Job</ion-label>
+            <ion-label class="label" position="floating">Job</ion-label>
             <ion-input type="text" [(ngModel)]="user.job" name="job"></ion-input>
           </ion-item>
         </ion-col>
@@ -53,7 +53,7 @@
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">Mobile Number</ion-label>
+            <ion-label class="label" position="floating">Mobile Number</ion-label>
             <ion-input type="text" [(ngModel)]="user.mobileNumber" name="mobileNumber"></ion-input>
           </ion-item>
         </ion-col>
@@ -61,15 +61,15 @@
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">Age</ion-label>
-            <ion-input type="number" [(ngModel)]="user.age" name="age"></ion-input>
+            <ion-label class="label" position="floating">Age</ion-label>
+            <ion-input type="number" [(ngModel)]="user.age" name="age" min="0"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">Gender</ion-label>
+            <ion-label class="label" position="floating">Gender</ion-label>
             <ion-input type="text" [(ngModel)]="user.gender" name="gender"></ion-input>
           </ion-item>
         </ion-col>
@@ -77,7 +77,7 @@
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">User Name</ion-label>
+            <ion-label class="label" position="floating">User Name</ion-label>
             <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
           </ion-item>
         </ion-col>
@@ -85,7 +85,7 @@
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-item>
-            <ion-label position="floating">Password</ion-label>
+            <ion-label class="label" position="floating">Password</ion-label>
             <ion-input type="text" [(ngModel)]="user.password" name="password"></ion-input>
           </ion-item>
         </ion-col>

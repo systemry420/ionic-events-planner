@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserProfilePage } from './pages/user-profile/user-profile.page';
 
 @NgModule({
-  declarations: [AppComponent, UserProfilePage],
+  declarations: [AppComponent],
   entryComponents: [AppComponent],
   imports: [
     BrowserModule,
