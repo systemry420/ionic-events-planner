@@ -18,9 +18,9 @@ export class AppComponent implements OnInit {
       icon: 'home'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Schedule',
+      url: '../pages/schedule',
+      icon: 'calendar-outline'
     }
   ];
   public labels = ['Family', 'Friends', 'Work', 'Travel', 'Reminders'];
