@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
       icon: 'calendar'
     },
     {
-      title: 'Setting',
-      url: '../pages/setting',
+      title: 'Prefernces',
+      url: '../pages/preferences',
       icon: 'settings'
     }
   ];

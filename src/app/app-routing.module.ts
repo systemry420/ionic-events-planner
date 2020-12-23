@@ -19,14 +19,19 @@ const routes: Routes = [
     path: 'pages/schedule',
     loadChildren: () => import('./pages/schedule/schedule.module').then( m => m.SchedulePageModule)
   },
-  {
-    path: 'pages/setting',
-    loadChildren: () => import('./pages/setting/settings.module').then( m => m.SettingsPageModule)
-  },
+  // {
+  //   path: 'pages/settings',
+  //   loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  // },
   {
     path: 'pages/home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'pages/preferences',
+    loadChildren: () => import('./pages/preferences/preferences.module').then( m => m.PreferencesPageModule)
   }
+
 
 
 ];
