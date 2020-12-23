@@ -4,7 +4,7 @@ export interface User {
   address: string;
   job: string;
   mobileNumber: string;
-  age: string;
+  age: number;
   gender: string;
   username: string;
   password: string;
