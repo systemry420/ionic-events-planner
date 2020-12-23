@@ -20,7 +20,12 @@ export class AppComponent implements OnInit {
     {
       title: 'Schedule',
       url: '../pages/schedule',
-      icon: 'calendar-outline'
+      icon: 'calendar'
+    },
+    {
+      title: 'Settings',
+      url: '../pages/settings',
+      icon: 'settings'
     }
   ];
   public labels = ['Family', 'Friends', 'Work', 'Travel', 'Reminders'];

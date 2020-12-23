@@ -18,7 +18,12 @@ const routes: Routes = [
   {
     path: 'pages/schedule',
     loadChildren: () => import('./pages/schedule/schedule.module').then( m => m.SchedulePageModule)
+  },
+  {
+    path: 'pages/settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
   }
+
 ];
 
 @NgModule({
