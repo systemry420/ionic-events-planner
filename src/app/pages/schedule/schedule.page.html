@@ -8,5 +8,42 @@
 </ion-header>
 
 <ion-content>
+  <mat-vertical-stepper #stepper> <!-- linear -->
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Specify your event charactersitcs</ng-template>
+        <ion-item>
+          <ion-select placeholder="One Time/Recurring">
+            <ion-select-option value="one">One Time</ion-select-option>
+            <ion-select-option value="more">Recurring</ion-select-option>
+          </ion-select>
+        </ion-item>
 
+        <ion-item>
+          <ion-select placeholder="Daily/Weekly/Monthly">
+            <ion-select-option value="daily">Daily</ion-select-option>
+            <ion-select-option value="weekly">Weekly</ion-select-option>
+            <ion-select-option value="monthly">Monthly</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-input placeholder="Number of occurrences" type="number" name="occurrence" min="0"></ion-input>
+        </ion-item>
+        <div>
+          <ion-button>
+            <button mat-button matStepperNext>Next</button>
+          </ion-button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Specify the location</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <ion-button color="danger" (click)="stepper.reset()">Reset</ion-button>
+        <ion-button>Submit</ion-button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
 </ion-content>
