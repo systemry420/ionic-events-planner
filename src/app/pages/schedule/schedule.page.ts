@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CalendarComponentOptions } from 'ion2-calendar'
 
 @Component({
   selector: 'app-schedule',
@@ -7,23 +8,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./schedule.page.scss'],
 })
 export class SchedulePage implements OnInit {
-    firstFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
+    formGroup: FormGroup;
     isEditable = false;
 
+    // calendar data
     date: string;
-    type: 'string';
+    dateMulti: string[];
+    dateType: 'string';
 
-    onChange($event) {
-      console.log($event);
-    }
+    optionsMulti: CalendarComponentOptions = {
+      pickMode: 'multi'
+    };
 
     constructor(private _formBuilder: FormBuilder) {}
 
     ngOnInit() {
-      this.firstFormGroup = this._formBuilder.group({
+      this.formGroup = this._formBuilder.group({
         firstCtrl: ['', Validators.required]
       });
+      console.log(this.formGroup.controls.firstCtrl.value)
     }
 
 }

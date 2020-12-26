@@ -9,6 +9,7 @@ import { SchedulePageRoutingModule } from './schedule-routing.module';
 import { SchedulePage } from './schedule.page';
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatStepperModule } from '@angular/material/stepper';
+import { CalendarModule } from 'ion2-calendar';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     IonicModule,
     MatStepperModule,
     ReactiveFormsModule,
+    CalendarModule,
     SchedulePageRoutingModule
   ],
   declarations: [SchedulePage]

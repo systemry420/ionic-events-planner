@@ -10,7 +10,7 @@
 <ion-content>
   <mat-vertical-stepper #stepper> <!-- linear -->
     <mat-step>
-      <form>
+      <form [formGroup]="formGroup">
         <ng-template matStepLabel>Specify your event charactersitcs</ng-template>
         <ion-item>
           <ion-select placeholder="One Time/Recurring">
@@ -30,12 +30,17 @@
         <ion-item>
           <ion-input placeholder="Number of occurrences" type="number" name="occurrence" min="0"></ion-input>
         </ion-item>
-        <div>
-          <ion-button>
-            <button mat-button matStepperNext>Next</button>
-          </ion-button>
-        </div>
       </form>
+
+        <ion-calendar [(ngModel)]="date"
+          [type]="dateType"
+          [options]="optionsMulti"
+          [format]="'YYYY-MM-DD'">
+        </ion-calendar>
+
+        <ion-button expand="block">
+          <button mat-button matStepperNext>Next</button>
+        </ion-button>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Specify the location</ng-template>
