@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { UserProfilePage } from './pages/user-profile/user-profile.page';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +18,8 @@ import { UserProfilePage } from './pages/user-profile/user-profile.page';
     BrowserModule,
     IonicModule.forRoot(),
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,
