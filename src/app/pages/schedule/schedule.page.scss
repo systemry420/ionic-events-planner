@@ -3,12 +3,13 @@
     margin-left: .2em;
 }
 
-ion-calendar {
+:host ion-calendar {
     padding: 0.3em;
 
-    .title {
-        color: #222;
-    }
+    // .title {
+    //     color: #222;
+    // }
+
 }
 
 button.next {

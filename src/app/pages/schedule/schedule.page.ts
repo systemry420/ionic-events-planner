@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CalendarComponentOptions } from 'ion2-calendar'
+import { CalendarComponentOptions, DayConfig } from 'ion2-calendar'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-schedule',
@@ -12,74 +13,94 @@ export class SchedulePage implements OnInit {
     isEditable = false;
     isOccurrenceDisabled = true;
 
-    // datetime picker data
-    currentDate = new Date().toString()
-
     // event data
-    evType: string = 'one';
-    evStyle: string = 'daily';
-    evOccurrence: number = 1;
-
-    // calendar data
-    date: string;
-    dateMulti: Date[];
-    dateRange: { from: string; to: string; };
+    evType: string;
+    evStyle: string;
+    evOccurrence: number;
+    // calendar initial data
+    selectedDate;
+    selectedDay; selectedMonth; selectedYear
+    dateMulti: string[];
+    _daysConfig = []
+    // dateRange: { from: string; to: string; };
     dateType: 'string';
-    optionsMulti: CalendarComponentOptions = {
-      pickMode: 'single'
+    options: CalendarComponentOptions = {
+      pickMode: 'single',
+      color: 'danger'
     };
 
-    // optionsMulti: CalendarComponentOptions = {
-    //   pickMode: 'multi'
-    // };
-
-    // constructor(private _formBuilder: FormBuilder) {}
-
     ngOnInit() {
-      // this.formGroup = this._formBuilder.group({
-      //   firstCtrl: ['', Validators.required]
-      // });
-      // console.log(this.formGroup.controls.firstCtrl.value)
-    }
-
-
-    setEventOnCalendar(ev) {
-      console.log(typeof ev.target.value, ev.target.value);
     }
 
     setType(ev) {
-      console.log(ev.target.value);
-      if(ev.target.value == 'more') {
-        this.isOccurrenceDisabled = false
-        this.evOccurrence = 2
-        this.optionsMulti = {
-          pickMode: 'multi'
-        };
-      } else {
-        this.isOccurrenceDisabled = true
-        this.optionsMulti = {
-          pickMode: 'single'
-        };
-      }
+      this.evType = ev
+      this.setEventOnCalendar()
     }
 
     setStyle(ev) {
-      if(ev.target.value == 'daily') {
-        this.optionsMulti = {
-          pickMode: 'range'
-        };
+      console.log(ev);
+      this.evStyle = ev;
+      this.setEventOnCalendar()
+    }
+
+    setOccurrence(ev) {
+      console.log(ev);
+      this.evOccurrence = ev
+      this.setEventOnCalendar()
+    }
+
+    getConfig(count, step) {
+      let _daysConfig = []
+      for (let i = 0; i < count; i++) {
+        _daysConfig.push({
+          date: new Date(this.selectedYear,
+                  this.selectedMonth,
+                  this.selectedDay + i * step),
+          marked: true,
+          cssClass: 'marked'
+        })
+      }
+
+      return _daysConfig
+    }
+
+    changeStartDate(ev) {
+      this.selectedDate = new Date(ev['_d']);
+      this.selectedDay = this.selectedDate.getDate()
+      this.selectedMonth = this.selectedDate.getMonth()
+      this.selectedYear = this.selectedDate.getFullYear()
+      this.setEventOnCalendar()
+    }
+
+    setEventOnCalendar() {
+      console.log(this.selectedYear,
+        this.selectedMonth,
+        this.selectedDay);
+
+      let _daysConfig = []
+      switch(this.evStyle) {
+        case "daily": {
+          for (let i = 0; i < this.evOccurrence; i++) {
+            _daysConfig.push({
+              date: new Date(
+                    this.selectedYear,
+                    this.selectedMonth,
+                    this.selectedDay + i),
+              marked: true,
+            })
+          }
+        }; break;
+        case "weekly": {
+          _daysConfig = this.getConfig(this.evOccurrence, 7)
+        }; break;
+        case "monthly": {
+          _daysConfig = this.getConfig(this.evOccurrence, 30)
+        }; break;
+      }
+
+      this.options = {
+        daysConfig: _daysConfig,
       }
     }
 
-    changeStart(ev) {
-      if(this.optionsMulti.pickMode == 'single') {
-        console.log((new Date(ev['_d']).toDateString()));
-        this.date = new Date(ev['_d']).toDateString();
-      } else {
-        ev.forEach(e => {
-          console.log(new Date(e['_d']).toDateString());
-          this.dateMulti.push(new Date(e['_d']))
-        })
-      }
-    }
 }
