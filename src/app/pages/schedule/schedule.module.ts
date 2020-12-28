@@ -11,6 +11,9 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MatStepperModule } from '@angular/material/stepper';
 import { CalendarModule } from 'ion2-calendar';
 import { FormComponent } from './form/form.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapComponent } from './map/map.component';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
   imports: [
@@ -20,8 +23,10 @@ import { FormComponent } from './form/form.component';
     MatStepperModule,
     ReactiveFormsModule,
     CalendarModule,
+    GoogleMapsModule,
     SchedulePageRoutingModule
   ],
-  declarations: [SchedulePage, FormComponent]
+  declarations: [SchedulePage, FormComponent, MapComponent],
+  providers: [Geolocation]
 })
 export class SchedulePageModule {}

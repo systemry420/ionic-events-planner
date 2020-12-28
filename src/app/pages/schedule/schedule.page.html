@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <mat-vertical-stepper #stepper> <!-- linear -->
+  <mat-vertical-stepper linear #stepper> <!-- linear -->
     <mat-step>
         <ng-template matStepLabel>Specify your event details</ng-template>
 
@@ -30,7 +30,7 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Specify the location</ng-template>
-      <p>You are now done.</p>
+      <app-map></app-map>
       <div>
         <ion-button color="danger" (click)="stepper.reset()">Reset</ion-button>
         <ion-button>Submit</ion-button>
