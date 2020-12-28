@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pages/home',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
   {
@@ -22,7 +22,12 @@ const routes: Routes = [
   {
     path: 'pages/preferences',
     loadChildren: () => import('./pages/preferences/preferences.module').then( m => m.PreferencesPageModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
   }
+
 
 
 
