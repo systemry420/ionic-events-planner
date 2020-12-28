@@ -9,11 +9,14 @@ import { IEvent } from '../../shared/event.interface'
 })
 export class HomePage implements OnInit {
 
-  homeEvents: IEvent[]
+  homeEvents
+
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
-    this.homeEvents = this.eventService.getEvents()
+    this.eventService.getEvents().subscribe(data=>{
+      this.homeEvents = data
+    })
   }
 
 

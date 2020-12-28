@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'pages/schedule',
+    redirectTo: 'pages/home',
     pathMatch: 'full'
   },
   {

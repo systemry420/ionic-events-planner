@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { IEvent } from '../shared/event.interface'
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @Injectable({
@@ -7,59 +9,19 @@ import { IEvent } from '../shared/event.interface'
 })
 export class EventService {
 
-  events: IEvent[] = [
-    {
-      title: 'Facebook Dev Circle',
-      type: 'One time',
-      style: 'daily',
-      occurrence: 1,
-      dates: ['Today - 5:40 pm'],
-      tags: ['Job', 'planning', 'Development', 'programming'],
-      status: "Going",
-      place: {
-          city: 'beirut',
-          lat: 1,
-          lng: 1,
-      }
-    },
-    {
-      title: 'Google BTW',
-      type: 'Recurring',
-      style: 'Weekly',
-      occurrence: 2,
-      dates: ['Mon 1/2/2021', 'Mon 8/2/2021'],
-      tags: ['Training', 'Team work'],
-      status: "Interested",
-      place: {
-          city: 'baalbek',
-          lat: 1,
-          lng: 1,
-      }
-    },
-    {
-      title: 'Google BTW',
-      type: 'Recurring',
-      style: 'Weekly',
-      occurrence: 2,
-      dates: ['Mon 1/2/2021', 'Mon 8/2/2021'],
-      tags: ['Training', 'Team work'],
-      status: "Interested",
-      place: {
-          city: 'baalbek',
-          lat: 1,
-          lng: 1,
-      }
-    },
-  ]
+  eventObs: Observable<any[]>
+  events
 
-  constructor() { }
+  constructor( private firestore: AngularFirestore) {
+
+  }
 
   getEvents() {
-    return this.events
+    return this.firestore.collection('events').valueChanges()
   }
 
   addEvent(type, style, occur, dates, location) {
     let newEvent = new IEvent(type, style, occur, dates, location)
-    this.events.push(newEvent)
+    // this.events.push(newEvent)
   }
 }
