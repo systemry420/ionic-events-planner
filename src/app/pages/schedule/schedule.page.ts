@@ -100,6 +100,7 @@ export class SchedulePage implements OnInit {
 
       this.options = {
         daysConfig: _daysConfig,
+        color: 'danger'
       }
     }
 

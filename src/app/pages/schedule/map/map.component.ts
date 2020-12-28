@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Output, OnInit, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
@@ -8,7 +8,10 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 })
 export class MapComponent implements OnInit {
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
+  @Output() mapEvent = new EventEmitter()
+
   map: google.maps.Map;
+  marker: google.maps.Marker
   lat = 34.0322318;
   lng = 35.8901287;
 
@@ -37,12 +40,41 @@ export class MapComponent implements OnInit {
 
     this.map = new google.maps.Map(this.gmap.nativeElement, mapOptions);
 
-    let marker = new google.maps.Marker({
+    this.marker = new google.maps.Marker({
       position: coordinates,
       map: this.map,
+      draggable: true,
     });
 
-    marker.setMap(this.map);
+    this.marker.setMap(this.map);
+    this.marker.addListener('dragend', ()=>{
+      this.updatePosition(this.marker.getPosition().lat(), this.marker.getPosition().lng());
+    })
+  }
+
+  updatePosition(lat, lng) {
+    console.log(lat, lng);
+
+    const geocoder = new google.maps.Geocoder();
+    const infowindow = new google.maps.InfoWindow();
+
+    geocoder.geocode({ location: {lat, lng} },
+      (
+        results: google.maps.GeocoderResult[],
+        status: google.maps.GeocoderStatus
+      ) => {
+        if (status === "OK") {
+          if (results[0]) {
+            infowindow.setContent(results[0].formatted_address);
+            infowindow.open(this.map, this.marker);
+          } else {
+            window.alert("No results found");
+          }
+        } else {
+          window.alert("Geocoder failed due to: " + status);
+        }
+      }
+    );
   }
 
 }
