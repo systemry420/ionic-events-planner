@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
-import { Event } from '../../services/event.interface'
+import { IEvent } from '../../shared/event.interface'
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { Event } from '../../services/event.interface'
 })
 export class HomePage implements OnInit {
 
-  homeEvents: Event[]
+  homeEvents: IEvent[]
   constructor(private eventService: EventService) { }
 
   ngOnInit() {

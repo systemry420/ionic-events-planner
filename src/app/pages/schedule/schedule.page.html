@@ -30,10 +30,10 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Specify the location</ng-template>
-      <app-map></app-map>
+      <app-map (mapEvent)="setLocation($event)"></app-map>
       <div>
-        <ion-button color="danger" (click)="stepper.reset()">Reset</ion-button>
-        <ion-button>Submit</ion-button>
+        <ion-button color="danger" (click)="reset()">Reset</ion-button>
+        <ion-button (click)="submitEvent()">Submit</ion-button>
       </div>
     </mat-step>
   </mat-vertical-stepper>

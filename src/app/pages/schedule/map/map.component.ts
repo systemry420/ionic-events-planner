@@ -33,7 +33,7 @@ export class MapComponent implements OnInit {
     let coordinates = new google.maps.LatLng(this.lat, this.lng);
     let mapOptions: google.maps.MapOptions = {
       center: coordinates,
-      zoom: 8,
+      zoom: 7,
     };
 
     console.log(this.lat, this.lng);
@@ -51,9 +51,10 @@ export class MapComponent implements OnInit {
       this.updatePosition(this.marker.getPosition().lat(), this.marker.getPosition().lng());
     })
   }
-
+  
   updatePosition(lat, lng) {
     console.log(lat, lng);
+    this.mapEvent.emit({lat, lng})
 
     const geocoder = new google.maps.Geocoder();
     const infowindow = new google.maps.InfoWindow();

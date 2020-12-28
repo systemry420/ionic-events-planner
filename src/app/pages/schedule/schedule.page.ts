@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalendarComponentOptions, DayConfig } from 'ion2-calendar'
 import * as moment from 'moment';
+import { EventService } from 'src/app/services/event.service';
+import { IEvent } from '../../shared/event.interface'
 
 @Component({
   selector: 'app-schedule',
@@ -9,6 +11,8 @@ import * as moment from 'moment';
   styleUrls: ['./schedule.page.scss'],
 })
 export class SchedulePage implements OnInit {
+    @ViewChild('stepper') stepper ;
+
     formGroup: FormGroup;
     isEditable = false;
     isOccurrenceDisabled = true;
@@ -17,11 +21,14 @@ export class SchedulePage implements OnInit {
     evType: string;
     evStyle: string;
     evOccurrence: number;
+    selectedDates = [];
+    location;
+
     // calendar initial data
-    selectedDate;
     selectedDay; selectedMonth; selectedYear
     dateMulti: string[];
     _daysConfig = []
+
     // dateRange: { from: string; to: string; };
     dateType: 'string';
     options: CalendarComponentOptions = {
@@ -32,19 +39,21 @@ export class SchedulePage implements OnInit {
     ngOnInit() {
     }
 
+    constructor(private eventService: EventService) {
+
+    }
+
     setType(ev) {
       this.evType = ev
       this.setEventOnCalendar()
     }
 
     setStyle(ev) {
-      console.log(ev);
       this.evStyle = ev;
       this.setEventOnCalendar()
     }
 
     setOccurrence(ev) {
-      console.log(ev);
       this.evOccurrence = ev
       this.setEventOnCalendar()
     }
@@ -65,18 +74,14 @@ export class SchedulePage implements OnInit {
     }
 
     changeStartDate(ev) {
-      this.selectedDate = new Date(ev['_d']);
-      this.selectedDay = this.selectedDate.getDate()
-      this.selectedMonth = this.selectedDate.getMonth()
-      this.selectedYear = this.selectedDate.getFullYear()
+      let selectedDate = new Date(ev['_d']);
+      this.selectedDay = selectedDate.getDate()
+      this.selectedMonth = selectedDate.getMonth()
+      this.selectedYear = selectedDate.getFullYear()
       this.setEventOnCalendar()
     }
 
     setEventOnCalendar() {
-      console.log(this.selectedYear,
-        this.selectedMonth,
-        this.selectedDay);
-
       let _daysConfig = []
       switch(this.evStyle) {
         case "daily": {
@@ -102,6 +107,24 @@ export class SchedulePage implements OnInit {
         daysConfig: _daysConfig,
         color: 'danger'
       }
+
+      this.selectedDates = _daysConfig.map(day => day.date);
+    }
+
+    setLocation(latlng) {
+      this.location = latlng;
+    }
+
+    reset() {
+      this.stepper.reset()
+      // reset form & cal
+    }
+
+    submitEvent() {
+      // check for validity and show alert
+      this.eventService.addEvent(
+        this.evType, this.evStyle, this.evOccurrence, this.selectedDates, this.location
+      )
     }
 
 }
