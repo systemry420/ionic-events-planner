@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/shared/user.interface';
@@ -16,7 +17,7 @@ export class AuthPage implements OnInit {
   isLoading = false
   error: string = null
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -51,6 +52,9 @@ export class AuthPage implements OnInit {
     authObs.subscribe(respData => {
       console.log(respData);
       this.isLoading = false
+      if(respData.registered) {
+        this.router.navigate(['pages/home'])
+      }
     },
     error => {
       this.isLoading = false
