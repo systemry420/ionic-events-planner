@@ -5,6 +5,7 @@ import { BehaviorSubject, throwError } from 'rxjs'
 import { UserToken } from '../shared/user.token';
 
 export interface AuthResponse {
+  kind: string;
   idToken: string;
   email: string;
   refreshToken: string;

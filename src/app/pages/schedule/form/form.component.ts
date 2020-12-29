@@ -32,7 +32,6 @@ export class FormComponent implements OnInit {
   }
 
   setTitle(ev) {
-    console.log(this.evTitle);
     this.titleEvent.emit(this.evTitle)
   }
 

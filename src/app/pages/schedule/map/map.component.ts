@@ -23,7 +23,7 @@ export class MapComponent implements OnInit {
         this.lat = resp.coords.latitude
         this.lng = resp.coords.longitude
       }
-      console.log(this.lat, this.lng);
+      // console.log(this.lat, this.lng);
       this.mapInitializer();
 
     }).catch((error) => {
@@ -38,7 +38,7 @@ export class MapComponent implements OnInit {
       zoom: 7,
     };
 
-    console.log(this.lat, this.lng);
+    // console.log(this.lat, this.lng);
 
     this.map = new google.maps.Map(this.gmap.nativeElement, mapOptions);
 

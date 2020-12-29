@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { User } from 'src/app/shared/user.interface';
 import { AuthResponse } from "../../services/auth.service";
 
@@ -17,7 +18,7 @@ export class AuthPage implements OnInit {
   isLoading = false
   error: string = null
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private toast: ToastService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -51,6 +52,11 @@ export class AuthPage implements OnInit {
 
     authObs.subscribe(respData => {
       console.log(respData);
+      if(respData.kind == "identitytoolkit#SignupNewUserResponse") {
+        this.toast.presentToast("Your account is created successfully!")
+        this.isLoginview = true
+      }
+      // reset form 
       this.isLoading = false
       if(respData.registered) {
         this.router.navigate(['pages/home'])
@@ -59,9 +65,8 @@ export class AuthPage implements OnInit {
     error => {
       this.isLoading = false
       console.log(error);
-      // outsource to an alert component
-    }
-    )
+      // outsource to an alert component or display instant error
+    })
   }
 
 }

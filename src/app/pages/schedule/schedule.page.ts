@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 import { CalendarComponentOptions, DayConfig } from 'ion2-calendar'
 import * as moment from 'moment';
 import { EventService } from 'src/app/services/event.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { IEvent } from '../../shared/event.interface'
 
 @Component({
@@ -41,7 +43,7 @@ export class SchedulePage implements OnInit {
     ngOnInit() {
     }
 
-    constructor(private eventService: EventService) {
+    constructor(private toast: ToastService, private eventService: EventService, public toastController: ToastController) {
 
     }
 
@@ -136,7 +138,7 @@ export class SchedulePage implements OnInit {
         this.evTitle, this.evType, this.evStyle, this.evOccurrence, this.selectedDates, this.location, this.tags
       ).then(res=>{
         console.log(res);
-        
+        this.toast.presentToast("Your event has been saved.")
       })
     }
 
