@@ -19,8 +19,10 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.geolocation.getCurrentPosition().then((resp) => {
-      this.lat = resp.coords.latitude
-      this.lng = resp.coords.longitude
+      if(resp) {
+        this.lat = resp.coords.latitude
+        this.lng = resp.coords.longitude
+      }
       console.log(this.lat, this.lng);
       this.mapInitializer();
 
@@ -69,10 +71,10 @@ export class MapComponent implements OnInit {
             infowindow.setContent(results[0].formatted_address);
             infowindow.open(this.map, this.marker);
           } else {
-            window.alert("No results found");
+            console.log("No results found");
           }
         } else {
-          window.alert("Geocoder failed due to: " + status);
+          console.log("Geocoder failed due to: " + status);
         }
       }
     );

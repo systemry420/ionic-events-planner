@@ -20,8 +20,27 @@ export class EventService {
     return this.firestore.collection('events').valueChanges()
   }
 
-  addEvent(type, style, occur, dates, location) {
-    let newEvent = new IEvent(type, style, occur, dates, location)
-    // this.events.push(newEvent)
+  addEvent(title, type, style, occur, dates, location, tags) {
+    let newEvent = {
+      title,
+      type,
+      style,
+      occur,
+      dates,
+      location,
+      tags
+    }
+
+    console.log(newEvent);
+    
+
+    return new Promise<any>((resolve, reject) =>{
+      this.firestore
+          .collection("events")
+          .add(newEvent)
+          .then(res => {
+            resolve(res)
+          }, err => reject(err));
+    });
   }
 }

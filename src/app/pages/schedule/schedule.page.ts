@@ -18,11 +18,13 @@ export class SchedulePage implements OnInit {
     isOccurrenceDisabled = true;
 
     // event data
-    evType: string;
-    evStyle: string;
-    evOccurrence: number;
+    evType: string = 'one';
+    evStyle: string = 'daily';
+    evTitle: string = '';
+    evOccurrence: number = 1;
     selectedDates = [];
     location;
+    tags = ['Development', 'Team work']
 
     // calendar initial data
     selectedDay; selectedMonth; selectedYear
@@ -41,6 +43,10 @@ export class SchedulePage implements OnInit {
 
     constructor(private eventService: EventService) {
 
+    }
+
+    setTitle(title) {
+      this.evTitle = title
     }
 
     setType(ev) {
@@ -108,11 +114,15 @@ export class SchedulePage implements OnInit {
         color: 'danger'
       }
 
-      this.selectedDates = _daysConfig.map(day => day.date);
+      this.selectedDates = _daysConfig.map(day => day.date.toString());
     }
 
     setLocation(latlng) {
-      this.location = latlng;
+      this.location = {
+        city: "Beirut",
+        lat: latlng.lat,
+        lng: latlng.lng
+      };
     }
 
     reset() {
@@ -123,8 +133,11 @@ export class SchedulePage implements OnInit {
     submitEvent() {
       // check for validity and show alert
       this.eventService.addEvent(
-        this.evType, this.evStyle, this.evOccurrence, this.selectedDates, this.location
-      )
+        this.evTitle, this.evType, this.evStyle, this.evOccurrence, this.selectedDates, this.location, this.tags
+      ).then(res=>{
+        console.log(res);
+        
+      })
     }
 
 }

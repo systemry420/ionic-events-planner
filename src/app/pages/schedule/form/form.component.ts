@@ -12,20 +12,28 @@ export class FormComponent implements OnInit {
   @Output() typeEvent = new EventEmitter()
   @Output() styleEvent = new EventEmitter()
   @Output() occurEvent = new EventEmitter()
+  @Output() titleEvent = new EventEmitter()
 
   // event data
   evType: string = 'one';
   evStyle: string = 'daily';
   evOccurrence: number = 1;
+  evTitle: string = '';
 
   options: CalendarComponentOptions
 
   constructor() { }
 
   ngOnInit() {
-    this.typeEvent.emit(this.evType)
-    this.styleEvent.emit(this.evStyle)
-    this.occurEvent.emit(this.evOccurrence)
+    // this.typeEvent.emit(this.evType)
+    // this.styleEvent.emit(this.evStyle)
+    // this.occurEvent.emit(this.evOccurrence)
+    // this.occurEvent.emit(this.evTitle)
+  }
+
+  setTitle(ev) {
+    console.log(this.evTitle);
+    this.titleEvent.emit(this.evTitle)
   }
 
   setType(ev) {
