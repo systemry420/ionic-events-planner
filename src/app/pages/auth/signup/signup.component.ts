@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/shared/user.interface';
 
 @Component({
@@ -7,6 +7,8 @@ import { User } from 'src/app/shared/user.interface';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
+
+  @Output() signupEvent = new EventEmitter()
 
   user: User = {
     firstName: '',
@@ -29,7 +31,7 @@ export class SignupComponent implements OnInit {
       return;
     }
     // submit data to database
-    console.log(this.user);
+    this.signupEvent.emit(this.user);
     
   }
 

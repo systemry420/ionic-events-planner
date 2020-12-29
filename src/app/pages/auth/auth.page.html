@@ -8,9 +8,11 @@
 </ion-header>
 
 <ion-content>
-  <app-login *ngIf="isLoginview">
+  <!-- <ion-spinner *ngIf="isLoading"></ion-spinner> -->
+
+  <app-login *ngIf="isLoginview" (loginEvent)="onLogin($event)">
   </app-login>
 
-  <app-signup *ngIf="isLoginview == false">
+  <app-signup *ngIf="isLoginview == false" (signupEvent)="onSignup($event)">
   </app-signup>
 </ion-content>
