@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   onLogin(form) {
     // check if data is valid & available in DB
-    this.router.navigateByUrl('pages/home')
+    this.loginEvent.emit(form)
   }
 
 }
