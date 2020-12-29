@@ -1,13 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{isLogin? 'Login':'Signup'}}</ion-title>
+    <ion-title>{{isLoginview? 'Login':'Signup'}}</ion-title>
+    <ion-button (click)="switchMode()" slot="end" fill="clear">
+      {{ isLoginview? 'Signup': 'Login'}}
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-login *ngIf="isLogin">
+  <app-login *ngIf="isLoginview">
   </app-login>
 
-  <app-signup *ngIf="isLogin == false">
+  <app-signup *ngIf="isLoginview == false">
   </app-signup>
 </ion-content>

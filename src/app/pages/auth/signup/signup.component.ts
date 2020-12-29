@@ -24,8 +24,13 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSignup() {
-
+  onSignup(form) {
+    if(!form.valid) {
+      return;
+    }
+    // submit data to database
+    console.log(this.user);
+    
   }
 
 }

@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms'
 })
 export class AuthPage implements OnInit {
 
-  isLogin = true
+  isLoginview = true
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class AuthPage implements OnInit {
   }
 
   switchMode() {
-    this.isLogin = !this.isLogin
+    this.isLoginview = !this.isLoginview
   }
 
   onSubmit(form: NgForm) {
