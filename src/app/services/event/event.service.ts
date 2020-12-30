@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IEvent } from '../shared/event.interface'
+import { IEvent } from '../../shared/event.interface'
 import { AngularFirestore } from '@angular/fire/firestore';
 
 

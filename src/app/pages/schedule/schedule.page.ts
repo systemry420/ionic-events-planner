@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
 import { CalendarComponentOptions, DayConfig } from 'ion2-calendar'
 import * as moment from 'moment';
-import { EventService } from 'src/app/services/event.service';
-import { ToastService } from 'src/app/services/toast.service';
+import { EventService } from 'src/app/services/event/event.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 import { IEvent } from '../../shared/event.interface'
 
 @Component({
