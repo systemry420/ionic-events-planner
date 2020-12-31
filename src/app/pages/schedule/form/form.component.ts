@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarComponentOptions } from 'ion2-calendar';
-import { Output, EventEmitter } from '@angular/core'
+import { Output, Input, EventEmitter } from '@angular/core'
 
 @Component({
   selector: 'app-form',
@@ -8,11 +8,12 @@ import { Output, EventEmitter } from '@angular/core'
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-
+  @ViewChild('form') form;
   @Output() typeEvent = new EventEmitter()
   @Output() styleEvent = new EventEmitter()
   @Output() occurEvent = new EventEmitter()
   @Output() titleEvent = new EventEmitter()
+  @Input() resetForm;
 
   // event data
   evType: string = 'one';
@@ -23,6 +24,12 @@ export class FormComponent implements OnInit {
   options: CalendarComponentOptions
 
   constructor() { }
+
+  ngOnChanges() {
+    if(this.resetForm) {
+      this.form.reset()
+    }
+  }
 
   ngOnInit() {
     // this.typeEvent.emit(this.evType)

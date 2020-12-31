@@ -9,6 +9,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 export class MapComponent implements OnInit {
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   @Output() mapEvent = new EventEmitter()
+  @Output() currrentLocation = new EventEmitter()
 
   map: google.maps.Map;
   marker: google.maps.Marker
@@ -52,8 +53,10 @@ export class MapComponent implements OnInit {
     this.marker.addListener('dragend', ()=>{
       this.updatePosition(this.marker.getPosition().lat(), this.marker.getPosition().lng());
     })
+
+    this.currrentLocation.emit({lat: this.lat, lng: this.lng})
   }
-  
+
   updatePosition(lat, lng) {
     console.log(lat, lng);
     this.mapEvent.emit({lat, lng})

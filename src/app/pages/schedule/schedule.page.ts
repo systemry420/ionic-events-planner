@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { CalendarComponentOptions, DayConfig } from 'ion2-calendar'
 import * as moment from 'moment';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { EventService } from 'src/app/services/event/event.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { IEvent } from '../../shared/event.interface'
@@ -15,9 +17,8 @@ import { IEvent } from '../../shared/event.interface'
 export class SchedulePage implements OnInit {
     @ViewChild('stepper') stepper ;
 
-    formGroup: FormGroup;
-    isEditable = false;
-    isOccurrenceDisabled = true;
+    isStep1Valid = false
+    resetForm = false
 
     // event data
     evType: string = 'one';
@@ -25,7 +26,8 @@ export class SchedulePage implements OnInit {
     evTitle: string = '';
     evOccurrence: number = 1;
     selectedDates = [];
-    location;
+    location; updatedLocation;
+    lat; lng; upLat; upLng;
     tags = ['Development', 'Team work']
 
     // calendar initial data
@@ -43,8 +45,11 @@ export class SchedulePage implements OnInit {
     ngOnInit() {
     }
 
-    constructor(private toast: ToastService, private eventService: EventService, public toastController: ToastController) {
-
+    constructor(private router: Router,
+      private alertCtrl: AlertService,
+      private toast: ToastService,
+      private eventService: EventService,
+      public toastController: ToastController) {
     }
 
     setTitle(title) {
@@ -72,7 +77,7 @@ export class SchedulePage implements OnInit {
         _daysConfig.push({
           date: new Date(this.selectedYear,
                   this.selectedMonth,
-                  this.selectedDay + i * step),
+                  this.selectedDay + i * step).toDateString(),
           marked: true,
           cssClass: 'marked'
         })
@@ -98,7 +103,7 @@ export class SchedulePage implements OnInit {
               date: new Date(
                     this.selectedYear,
                     this.selectedMonth,
-                    this.selectedDay + i),
+                    this.selectedDay + i).toDateString(),
               marked: true,
             })
           }
@@ -120,26 +125,72 @@ export class SchedulePage implements OnInit {
     }
 
     setLocation(latlng) {
-      this.location = {
-        city: "Beirut",
-        lat: latlng.lat,
-        lng: latlng.lng
-      };
+      this.lat = latlng.lat;
+      this.lng = latlng.lng;
+      this.upLat = latlng.lat;
+      this.upLng = latlng.lng;
+    }
+
+    updateLocation(ev) {
+      this.upLat = ev.lat
+      this.upLng = ev.lng
     }
 
     reset() {
       this.stepper.reset()
-      // reset form & cal
+      this.evTitle = ''
+      this.resetForm = true
+      this.options = {
+        daysConfig: [],
+        color: 'danger'
+      }
+    }
+
+    step1Completed(stepper) {
+      console.log(this.evTitle, this.selectedDates);
+      if(this.evTitle == '') {
+        this.alertCtrl.presentAlert('Please provide a title for your event!');
+        return;
+      } else if(this.selectedDates.length == 0) {
+        this.alertCtrl.presentAlert('Please specify a starting date on calendar!');
+      }
+      else {
+        this.isStep1Valid = true
+        stepper.next()
+      }
+    }
+
+    checkCurrentLocation() {
+      if(this.lat == this.upLat && this.lng == this.upLng) {
+        this.alertCtrl
+        .presentAlertConfirm('Are u sure you want to proceed with current location?')
+        .then(res=> {
+          if(res == 'ok') {
+            this.submitEvent()
+          }
+        })
+      } else {
+        this.submitEvent()
+      }
     }
 
     submitEvent() {
-      // check for validity and show alert
+      this.location = {
+        city: "Beirut",
+        lat: this.upLat,
+        lng: this.upLng
+      }
+
       this.eventService.addEvent(
         this.evTitle, this.evType, this.evStyle, this.evOccurrence, this.selectedDates, this.location, this.tags
       ).then(res=>{
         console.log(res);
         this.toast.presentToast("Your event has been saved.")
       })
+
+      this.reset()
+
+      this.router.navigate(['pages/home'])
     }
 
 }

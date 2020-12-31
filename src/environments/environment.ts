@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyDH0Dk6-prIn3d8_Xo4KEn6cVbmyDoYYw0",
+    // apiKey: "AIzaSyDH0Dk6-prIn3d8_Xo4KEn6cVbmyDoYYw0",
     authDomain: "events-planner-2021.firebaseapp.com",
     projectId: "events-planner-2021",
     storageBucket: "events-planner-2021.appspot.com",
