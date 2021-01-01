@@ -57,12 +57,29 @@ export class AuthService {
     )
   }
 
+  autoLogin() {
+    const userData = JSON.parse(localStorage.getItem('userData'))
+    if(!userData){
+      return;
+    }
+
+    const loadedUser = new UserToken(userData.email, userData.id, userData._token, userData._tokenExpirationDate)
+
+    if(loadedUser.token) {
+      this.user.next(loadedUser)
+      return true
+    }
+    console.log(loadedUser);
+    
+  }
+
   private handleAuth(email, userId, token, expiresIn) {
     const expDate = new Date(new Date().getTime() + expiresIn * 1000)
     const userToken = new UserToken(
       email, userId, token, expDate
     )
     this.user.next(userToken)
+    localStorage.setItem('userData', JSON.stringify(userToken))
   }
 
   private handleError(errorRes) {
