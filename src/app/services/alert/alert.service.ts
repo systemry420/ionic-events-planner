@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { resolve } from 'dns';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertService {
+  alert: HTMLIonAlertElement
 
   constructor(public alertController: AlertController) { }
 
@@ -19,7 +19,6 @@ export class AlertService {
     await alert.present();
   }
 
-  alert
   async presentAlertConfirm(message) {
     return new Promise(async (resolve: any) => {
       this.alert = await this.alertController.create({

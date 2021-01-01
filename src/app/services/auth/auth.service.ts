@@ -22,12 +22,13 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  signup(email: string, password: string) {
+  signup(email: string, password: string, displayName) {
     return this.http.post<AuthResponse>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDH0Dk6-prIn3d8_Xo4KEn6cVbmyDoYYw0',
       {
         email: email,
         password: password,
+        displayName: displayName,
         returnSecureToken: true
       }
     ).
@@ -70,7 +71,7 @@ export class AuthService {
       return true
     }
     console.log(loadedUser);
-    
+
   }
 
   private handleAuth(email, userId, token, expiresIn) {

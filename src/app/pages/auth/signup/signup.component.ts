@@ -11,15 +11,16 @@ export class SignupComponent implements OnInit {
   @Output() signupEvent = new EventEmitter()
 
   user: User = {
-    firstName: '',
-    lastName: '',
-    address: '',
-    job: '',
-    mobileNumber: '',
-    age: 0,
-    gender: '',
-    username: '',
-    password: '',
+    firstName: 'a',
+    lastName: 'a',
+    address: 'a',
+    job: 'a',
+    mobileNumber: 'a',
+    age: 1,
+    gender: 'a',
+    username: 'a@a.com',
+    password: 'qwertyuiop',
+    events: []
   };
 
   constructor() { }

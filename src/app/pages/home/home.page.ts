@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { EventService } from 'src/app/services/event/event.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { IEvent } from '../../shared/event.interface'
 
 @Component({
@@ -10,8 +12,9 @@ import { IEvent } from '../../shared/event.interface'
 export class HomePage implements OnInit {
 
   homeEvents
+  currentUser
 
-  constructor(private eventService: EventService) { }
+  constructor(private authService: AuthService, private userService: UserService, private eventService: EventService) { }
 
   ngOnInit() {
     this.eventService.getEvents().subscribe(data=>{

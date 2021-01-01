@@ -8,4 +8,5 @@ export interface User {
   gender: string;
   username: string;
   password: string;
+  events: []
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/shared/user.interface';
 import { AuthResponse } from "../../services/auth/auth.service";
 
@@ -14,11 +15,12 @@ import { AuthResponse } from "../../services/auth/auth.service";
 })
 export class AuthPage implements OnInit {
 
-  isLoginview = true
+  isLoginview = false
+
   isLoading = false
   error: string = null
 
-  constructor(private toast: ToastService, private authService: AuthService, private router: Router) { }
+  constructor(private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -36,18 +38,23 @@ export class AuthPage implements OnInit {
   onSignup(user: User) {
     const email = user.username;
     const password = user.password;
-    this.submitData(email, password)
+    const displayName = user.firstName + ' ' + user.lastName
+    this.submitData(email, password, displayName)
     // submit other data
+    this.userService.submitUserData(user).then(res => {
+      console.log(res);
+      
+    })
   }
 
-  submitData(email, password) {
+  submitData(email, password, displayName?) {
     let authObs: Observable<AuthResponse>
 
     this.isLoading = true
     if(this.isLoginview) {
       authObs = this.authService.login(email, password)
     } else {
-      authObs = this.authService.signup(email, password)
+      authObs = this.authService.signup(email, password, displayName)
     }
 
     authObs.subscribe(respData => {

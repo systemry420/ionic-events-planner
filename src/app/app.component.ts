@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from './services/user/user.service';
+import { User } from './shared/user.interface';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,19 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  currentUser: User = {
+    firstName: '',
+    lastName: '',
+    address: '',
+    job: '',
+    mobileNumber: '',
+    age: 0,
+    gender: '',
+    username: '',
+    password: '',
+    events: []
+  };
+
   public selectedIndex = 0;
   public appPages = [
     {
@@ -37,7 +52,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
     this.initializeApp();
   }
@@ -52,6 +68,20 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     if(this.authService.autoLogin()) {
       this.router.navigate(['pages/home'])
+      this.getUser()
     }
+  }
+
+  getUser() {
+    this.userService.getCurrentUser()
+    .subscribe(users => {
+      this.authService.user.subscribe(data=> {
+        users.forEach((user: any) => {
+          if(user.username == data.email) {
+            this.currentUser = user
+          }
+        });
+      })
+    })
   }
 }
