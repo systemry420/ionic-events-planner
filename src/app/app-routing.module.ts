@@ -5,7 +5,7 @@ import { AuthGuard } from './pages/auth/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'user-profile',
     pathMatch: 'full'
   },
   {

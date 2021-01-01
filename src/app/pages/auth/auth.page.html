@@ -13,6 +13,6 @@
   <app-login *ngIf="isLoginview" (loginEvent)="onLogin($event)">
   </app-login>
 
-  <app-signup *ngIf="isLoginview == false" (signupEvent)="onSignup($event)">
+  <app-signup *ngIf="isLoginview == false" (signupEvent)="switchMode()">
   </app-signup>
 </ion-content>

@@ -9,10 +9,12 @@ import { AuthPageRoutingModule } from './auth-routing.module';
 import { AuthPage } from './auth.page';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   imports: [
     CommonModule,
+    MatStepperModule,
     FormsModule,
     IonicModule,
     AuthPageRoutingModule

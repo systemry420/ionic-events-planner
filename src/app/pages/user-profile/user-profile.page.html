@@ -4,6 +4,9 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>User Profile</ion-title>
+    <ion-button class="ion-border-none" slot="end" (click)="updateInfo()">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -71,22 +74,6 @@
           <ion-item>
             <ion-label class="label" position="floating">Gender</ion-label>
             <ion-input type="text" [(ngModel)]="user.gender" name="gender"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size-md="6" offset-md="3">
-          <ion-item>
-            <ion-label class="label" position="floating">User Name</ion-label>
-            <ion-input type="text" [(ngModel)]="user.username" name="username"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size-md="6" offset-md="3">
-          <ion-item>
-            <ion-label class="label" position="floating">Password</ion-label>
-            <ion-input type="text" [(ngModel)]="user.password" name="password"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>

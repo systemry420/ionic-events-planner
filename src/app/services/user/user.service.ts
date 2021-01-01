@@ -13,11 +13,12 @@ export class UserService {
 
   constructor(private authService: AuthService, private firestore: AngularFirestore) { }
 
-  submitUserData(user) {
+  submitUserData(id, user) {
     return new Promise<any>((resolve, reject) =>{
       this.firestore
           .collection("users")
-          .add(user)
+          .doc(id)
+          .set(user)
           .then(res => {
             resolve(res)
           }, err => reject(err));

@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     mobileNumber: '',
     age: 0,
     gender: '',
-    username: '',
+    email: '',
     password: '',
     events: []
   };

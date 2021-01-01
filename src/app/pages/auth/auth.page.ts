@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -20,7 +21,7 @@ export class AuthPage implements OnInit {
   isLoading = false
   error: string = null
 
-  constructor(private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { }
+  constructor(private alertCtrl: AlertService, private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -31,49 +32,51 @@ export class AuthPage implements OnInit {
 
   onLogin(form: NgForm) {
     const email = form.value.email;
-    const passowrd = form.value.password;
-    this.submitData(email, passowrd)
+    const password = form.value.password;
+
+    this.authService.login(email, password)
+    .subscribe(respData => {
+        console.log(respData);
+
+        // this.isLoading = false
+        if(respData.registered) {
+          this.router.navigate(['pages/home'])
+        }
+      },
+      error => {
+        this.isLoading = false
+        this.alertCtrl.presentAlert(error);
+      }
+    )
   }
 
-  onSignup(user: User) {
-    const email = user.username;
-    const password = user.password;
-    const displayName = user.firstName + ' ' + user.lastName
-    this.submitData(email, password, displayName)
-    // submit other data
-    this.userService.submitUserData(user).then(res => {
-      console.log(res);
-      
-    })
-  }
 
-  submitData(email, password, displayName?) {
-    let authObs: Observable<AuthResponse>
+  submitData(email, password) {
+    // let authObs: Observable<AuthResponse>
 
-    this.isLoading = true
-    if(this.isLoginview) {
-      authObs = this.authService.login(email, password)
-    } else {
-      authObs = this.authService.signup(email, password, displayName)
-    }
+    // this.isLoading = true
+    // if(this.isLoginview) {
+    //   authObs = this.authService.login(email, password)
+    // } else {
+    //   authObs = this.authService.signup(email, password)
+    // }
 
-    authObs.subscribe(respData => {
-      console.log(respData);
-      if(respData.kind == "identitytoolkit#SignupNewUserResponse") {
-        this.toast.presentToast("Your account is created successfully!")
-        this.isLoginview = true
-      }
-      // reset form 
-      this.isLoading = false
-      if(respData.registered) {
-        this.router.navigate(['pages/home'])
-      }
-    },
-    error => {
-      this.isLoading = false
-      console.log(error);
-      // outsource to an alert component or display instant error
-    })
+    // authObs.subscribe(respData => {
+    //   console.log(respData);
+    //   if(respData.kind == "identitytoolkit#SignupNewUserResponse") {
+    //     // this.toast.presentToast("Your account is created successfully!")
+    //   }
+    //   // reset form
+    //   this.isLoading = false
+    //   if(respData.registered) {
+    //     this.router.navigate(['pages/home'])
+    //   }
+    // },
+    // error => {
+    //   this.isLoading = false
+    //   console.log(error);
+    //   this.alertCtrl.presentAlert(error);
+    // })
   }
 
 }

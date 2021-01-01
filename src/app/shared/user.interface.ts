@@ -6,7 +6,7 @@ export interface User {
   mobileNumber: string;
   age: number;
   gender: string;
-  username: string;
+  email: string;
   password: string;
   events: []
 }
