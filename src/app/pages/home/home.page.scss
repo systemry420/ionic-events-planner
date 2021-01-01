@@ -2,10 +2,20 @@ ion-card-title {
     font-size: 1.6em;
 }
 
-ion-label {
+.info {
     color: #444;
     display: flex;
     justify-content: space-around;
+}
+
+.date, .city {
+    display: flex;
+    align-items: center;
+    line-height: 1%;
+
+    ion-icon {
+        margin-right: 5px;
+    }
 }
 
 .tag {
