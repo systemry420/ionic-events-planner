@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Schedule</ion-title>
+    <ion-title>{{'Schedule' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,9 @@
       <ion-col size-sm="10" offset-sm="1">
         <mat-vertical-stepper [linear]="!isStep1Valid" #stepper>
           <mat-step [completed]="isStep1Valid">
-              <ng-template matStepLabel>Specify your event details</ng-template>
+              <ng-template matStepLabel>
+                {{ 'Specify your event details' | translate }}
+              </ng-template>
       
               <app-form
                 [resetForm]="resetForm"
@@ -32,14 +34,14 @@
                 [format]="'YYYY-MM-DD'">
               </ion-calendar>
       
-              <button class="next" matButton (click)="step1Completed(stepper)">Next</button>
+              <button class="next" matButton (click)="step1Completed(stepper)">{{'Next' | translate}}</button>
           </mat-step>
           <mat-step>
-            <ng-template matStepLabel>Specify the location</ng-template>
+            <ng-template matStepLabel>{{'Specify the location' | translate}}</ng-template>
             <app-map (mapEvent)="updateLocation($event)" (currrentLocation)="setLocation($event)"></app-map>
             <div>
-              <ion-button color="danger" (click)="reset()" expand="block">Reset</ion-button>
-              <ion-button (click)="checkCurrentLocation()" expand="block">Submit</ion-button>
+              <ion-button color="danger" (click)="reset()" expand="block">{{'Reset' | translate}}</ion-button>
+              <ion-button (click)="checkCurrentLocation()" expand="block">{{'Submit' | translate}}</ion-button>
             </div>
           </mat-step>
         </mat-vertical-stepper>

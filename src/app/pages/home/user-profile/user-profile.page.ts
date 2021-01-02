@@ -4,6 +4,7 @@ import { ActionSequence } from 'protractor';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from '../../../shared/user.interface'
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-profile',
@@ -25,7 +26,12 @@ export class UserProfilePage implements OnInit {
     password: '',
   };
 
-  constructor(private firestore: AngularFirestore, private userService: UserService, private authService: AuthService) { }
+  constructor(
+    public translate: TranslateService,
+    private firestore: AngularFirestore,
+    private userService: UserService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
     this.getUser()

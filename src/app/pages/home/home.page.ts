@@ -11,13 +11,17 @@ import { IEvent } from '../../shared/event.interface'
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
   homeEvents
   currentUser
 
-  constructor(  private menu: MenuController,
-    private authService: AuthService, private userService: UserService, private eventService: EventService) { 
+  constructor(
+    private menu: MenuController,
+    private authService: AuthService,
+    private userService: UserService,
+    private eventService: EventService,
+    ) {
     this.menu.enable(true, 'custom');
+      // the lang to use, if the lang isn't available, it will use the current loader to get them
   }
 
 

@@ -14,6 +14,7 @@ import { FormComponent } from './form/form.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapComponent } from './map/map.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     MatStepperModule,
     ReactiveFormsModule,
     CalendarModule,
+    TranslateModule.forChild(),
     GoogleMapsModule,
     SchedulePageRoutingModule
   ],

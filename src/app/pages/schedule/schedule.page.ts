@@ -8,6 +8,7 @@ import { AlertService } from 'src/app/services/alert/alert.service';
 import { EventService } from 'src/app/services/event/event.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { IEvent } from '../../shared/event.interface'
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-schedule',
@@ -16,6 +17,7 @@ import { IEvent } from '../../shared/event.interface'
 })
 export class SchedulePage implements OnInit {
     @ViewChild('stepper') stepper ;
+    public translate: TranslateService
 
     isStep1Valid = false
     resetForm = false

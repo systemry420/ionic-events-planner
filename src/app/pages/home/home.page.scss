@@ -3,6 +3,27 @@
     border-radius: 20px 20px 0 0;
 }
 
+ion-toolbar {
+    --background: transparent;
+    color: #fff;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: -1vw;
+    // height: 130%;
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    svg {
+        left: -1vh;
+        // height: 100%;
+    }
+  }
+
+
 ion-card {
     ion-card-title {
         font-size: 1.6em;

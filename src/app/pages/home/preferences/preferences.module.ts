@@ -15,6 +15,6 @@ import { PreferencesPage } from './preferences.page';
     IonicModule,
     PreferencesPageRoutingModule
   ],
-  declarations: [PreferencesPage]
+  declarations: []
 })
 export class PreferencesPageModule {}

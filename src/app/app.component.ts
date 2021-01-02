@@ -7,6 +7,7 @@ import { AuthService } from './services/auth/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from './services/user/user.service';
 import { User } from './shared/user.interface';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit {
       icon: 'calendar'
     },
     {
-      title: 'Prefernces',
+      title: 'Preferences',
       url: '../home/preferences',
       icon: 'settings'
     }
@@ -53,9 +54,14 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private authService: AuthService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    translate: TranslateService
   ) {
     this.initializeApp();
+    translate.setDefaultLang('en');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+   translate.use('ar');
   }
 
   initializeApp() {

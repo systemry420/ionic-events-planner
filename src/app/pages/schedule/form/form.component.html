@@ -1,7 +1,7 @@
 <form #form="ngForm">
 
   <ion-item>
-    <ion-input [value]="evTitle" placeholder="Event title" (ionChange)="setTitle()" name="evTitle" [(ngModel)]="evTitle" required></ion-input>
+    <ion-input [value]="evTitle" placeholder="{{'Event title' | translate}}" (ionChange)="setTitle()" name="evTitle" [(ngModel)]="evTitle" required></ion-input>
   </ion-item>
   <ion-item>
     <ion-select
@@ -9,26 +9,26 @@
       name="evType"
       (ionChange) = "setType($event)"
       [(ngModel)]="evType">
-      <ion-select-option value="one">One Time</ion-select-option>
-      <ion-select-option value="more">Recurring</ion-select-option>
+      <ion-select-option value="one">{{'One Time' | translate}}</ion-select-option>
+      <ion-select-option value="more">{{"Recurring" | translate}}</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-item *ngIf="evType == 'more' ">
     <ion-select
-      placeholder="Daily/Weekly/Monthly"
+      placeholder="{{'Daily/Weekly/Monthly' | translate}}"
       name="evStyle"
       (ionChange) = "setStyle()"
       [(ngModel)]="evStyle">
-      <ion-select-option value="daily">Daily</ion-select-option>
-      <ion-select-option value="weekly">Weekly</ion-select-option>
-      <ion-select-option value="monthly">Monthly</ion-select-option>
+      <ion-select-option value="daily">{{'Daily' | translate}}</ion-select-option>
+      <ion-select-option value="weekly">{{'Weekly' | translate}}</ion-select-option>
+      <ion-select-option value="monthly">{{'Monthly' | translate}}</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-item *ngIf="evType == 'more' ">
     <ion-input
-      placeholder="Number of occurrences"
+      placeholder="{{'Number of occurrences' | translate}}"
       type="number"
       name="evOccurrence"
       min="0"
