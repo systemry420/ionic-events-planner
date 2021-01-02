@@ -6,3 +6,17 @@ ion-text {
 *, ion-label.label {
     font-family: 'Montserrat';
 }
+
+svg {
+    position: absolute;
+    top: -2%;
+    height: 135vh;
+    z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+    svg {
+        top: -2vh;
+        height: 150vh;
+    }
+}

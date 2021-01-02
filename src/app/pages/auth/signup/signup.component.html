@@ -2,7 +2,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size-sm="6" offset-sm="3">
-        <mat-vertical-stepper linear #stepper>
+        <mat-vertical-stepper #stepper>
           <mat-step [completed]="isForm1Valid">
               <ng-template matStepLabel>Please enter your email and password</ng-template>
               <form>
@@ -102,8 +102,13 @@
             </form>
           </mat-step>
         </mat-vertical-stepper>
-      
       </ion-col>
     </ion-row>
   </ion-grid>
+  
+  <svg viewBox="0 0 296 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
+    <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
+    <path d="M0 113.017C122 -5.30332 133 117.826 296 99.5494V164H0V113.017Z" fill="#3340B5"/>
+  </svg>
 </ion-content>

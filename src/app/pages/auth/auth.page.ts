@@ -17,7 +17,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class AuthPage implements OnInit {
 
-  isLoginview = false
+  isLoginview = true
 
   isLoading = false
   error: string = null

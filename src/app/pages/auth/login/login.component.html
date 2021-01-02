@@ -1,29 +1,39 @@
-<form #f="ngForm" (ngSubmit)="onLogin(f)">
-  <ion-grid>
-    <ion-row>
-      <ion-col size-sm="6" offset-sm="3">
-        <ion-item>
-          <ion-label class="label" position="floating">Email</ion-label>
-          <ion-input #emailInput="ngModel" type="email" ngModel email required name="email"></ion-input>
-        </ion-item>
-        <ion-text color="danger" *ngIf="!emailInput.valid && emailInput.touched">
-          Should be a valid email address.
-        </ion-text>
-        <ion-item>
-          <ion-label class="label" position="floating">Password</ion-label>
-          <ion-input #passwordInput="ngModel" type="password" ngModel required name="password" minlength="6"></ion-input>
-        </ion-item>
-        <ion-text color="danger" *ngIf="!passwordInput.valid && passwordInput.touched">
-          Should be a valid password.
-        </ion-text>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size-sm="6" offset-sm="3">
-        <ion-button [disabled]="!f.valid" type="submit" expand="block">
-          {{'Login'}}
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</form>
+<ion-content>
+
+  <svg viewBox="0 0 296 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
+    <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
+    <path d="M0 113.017C122 -5.30332 133 117.826 296 99.5494V164H0V113.017Z" fill="#3340B5"/>
+  </svg>
+
+  <form #f="ngForm" (ngSubmit)="onLogin(f)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label class="label" position="floating">Email</ion-label>
+            <ion-input #emailInput="ngModel" type="email" ngModel email required name="email"></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="!emailInput.valid && emailInput.touched">
+            Should be a valid email address.
+          </ion-text>
+          <ion-item>
+            <ion-label class="label" position="floating">Password</ion-label>
+            <ion-input #passwordInput="ngModel" type="password" ngModel required name="password" minlength="6"></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="!passwordInput.valid && passwordInput.touched">
+            Should be a valid password.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button [disabled]="!f.valid" type="submit" expand="block" color="tertiary">
+            {{'Login'}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

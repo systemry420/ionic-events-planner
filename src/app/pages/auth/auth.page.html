@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{isLoginview? 'Login':'Signup'}}</ion-title>
     <ion-button (click)="switchMode()" slot="end" fill="clear">
@@ -7,9 +7,9 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
   <!-- <ion-spinner *ngIf="isLoading"></ion-spinner> -->
-
   <app-login *ngIf="isLoginview" (loginEvent)="onLogin($event)">
   </app-login>
 
