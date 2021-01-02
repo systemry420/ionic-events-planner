@@ -40,7 +40,7 @@ export class AuthPage implements OnInit {
 
         // this.isLoading = false
         if(respData.registered) {
-          this.router.navigate(['pages/home'])
+          this.router.navigate(['home'])
         }
       },
       error => {

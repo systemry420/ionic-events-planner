@@ -4,7 +4,7 @@
       <ion-content #content>
         <ion-list id="inbox-list">
           <ion-menu-toggle auto-hide="false">
-            <ion-item [routerLink]="['user-profile']">
+            <ion-item [routerLink]="['home/user-profile']">
               <ion-grid>
                 <ion-row>
                   <ion-col size-xs="3">
@@ -19,7 +19,7 @@
                       <ion-list-header>{{currentUser.firstName}}</ion-list-header>
                     </ion-row>
                     <ion-row class="ion-text-wrap">
-                      <ion-note>{{currentUser.username}}</ion-note>
+                      <ion-note>{{currentUser.email}}</ion-note>
                     </ion-row>
                   </ion-grid>
                   </ion-col>

@@ -190,7 +190,7 @@ export class SchedulePage implements OnInit {
 
       this.reset()
 
-      this.router.navigate(['pages/home'])
+      this.router.navigate(['home'])
     }
 
 }

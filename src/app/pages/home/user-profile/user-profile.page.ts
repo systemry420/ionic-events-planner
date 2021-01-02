@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActionSequence } from 'protractor';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
-import { User } from '../../shared/user.interface'
+import { User } from '../../../shared/user.interface'
 
 @Component({
   selector: 'app-user-profile',

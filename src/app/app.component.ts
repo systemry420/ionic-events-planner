@@ -31,17 +31,17 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Home',
-      url: '../pages/home',
+      url: '../home',
       icon: 'home'
     },
     {
       title: 'Schedule',
-      url: '../pages/schedule',
+      url: '../home/schedule',
       icon: 'calendar'
     },
     {
       title: 'Prefernces',
-      url: '../pages/preferences',
+      url: '../home/preferences',
       icon: 'settings'
     }
   ];
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if(this.authService.autoLogin()) {
-      this.router.navigate(['pages/home'])
+      // this.router.navigate(['home'])
       this.getUser()
     }
   }
