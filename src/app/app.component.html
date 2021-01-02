@@ -2,7 +2,7 @@
   <ion-split-pane contentId="main-content" persistent="true">
     <ion-menu contentId="main-content" persistent="true"  content="content"  menuId="custom">
       <ion-content #content>
-        <ion-list id="inbox-list">
+        <ion-list id="inbox-list" class="ion-no-border">
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerLink]="['home/user-profile']">
               <ion-grid>
@@ -34,9 +34,14 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-
+        <svg viewBox="0 0 296 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
+          <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
+          <path d="M0 113.017C122 -5.30332 133 117.826 296 99.5494V164H0V113.017Z" fill="#3340B5"/>
+        </svg>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
+    <ion-router-outlet id="main-content">
+    </ion-router-outlet>
   </ion-split-pane>
 </ion-app>

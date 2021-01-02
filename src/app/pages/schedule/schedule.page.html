@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -8,36 +8,43 @@
 </ion-header>
 
 <ion-content>
-  <mat-vertical-stepper [linear]="!isStep1Valid" #stepper>
-    <mat-step [completed]="isStep1Valid">
-        <ng-template matStepLabel>Specify your event details</ng-template>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="10" offset-sm="1">
+        <mat-vertical-stepper [linear]="!isStep1Valid" #stepper>
+          <mat-step [completed]="isStep1Valid">
+              <ng-template matStepLabel>Specify your event details</ng-template>
+      
+              <app-form
+                [resetForm]="resetForm"
+                (typeEvent)="setType($event)"
+                (styleEvent)="setStyle($event)"
+                (titleEvent)="setTitle($event)"
+                (occurEvent)="setOccurrence($event)">
+              </app-form>
+      
+              <ion-calendar
+                showToggleButtons = "true"
+                [options] = "options"
+                [ngModel]="dateMulti"
+                (change) = "changeStartDate($event)"
+                [type]="dateType"
+                [format]="'YYYY-MM-DD'">
+              </ion-calendar>
+      
+              <button class="next" matButton (click)="step1Completed(stepper)">Next</button>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Specify the location</ng-template>
+            <app-map (mapEvent)="updateLocation($event)" (currrentLocation)="setLocation($event)"></app-map>
+            <div>
+              <ion-button color="danger" (click)="reset()" expand="block">Reset</ion-button>
+              <ion-button (click)="checkCurrentLocation()" expand="block">Submit</ion-button>
+            </div>
+          </mat-step>
+        </mat-vertical-stepper>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-        <app-form
-          [resetForm]="resetForm"
-          (typeEvent)="setType($event)"
-          (styleEvent)="setStyle($event)"
-          (titleEvent)="setTitle($event)"
-          (occurEvent)="setOccurrence($event)">
-        </app-form>
-
-        <ion-calendar
-          showToggleButtons = "true"
-          [options] = "options"
-          [ngModel]="dateMulti"
-          (change) = "changeStartDate($event)"
-          [type]="dateType"
-          [format]="'YYYY-MM-DD'">
-        </ion-calendar>
-
-        <button class="next" matButton (click)="step1Completed(stepper)">Next</button>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Specify the location</ng-template>
-      <app-map (mapEvent)="updateLocation($event)" (currrentLocation)="setLocation($event)"></app-map>
-      <div>
-        <ion-button color="danger" (click)="reset()" expand="block">Reset</ion-button>
-        <ion-button (click)="checkCurrentLocation()" expand="block">Submit</ion-button>
-      </div>
-    </mat-step>
-  </mat-vertical-stepper>
 </ion-content>

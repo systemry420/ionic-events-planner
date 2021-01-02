@@ -118,3 +118,19 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+
+svg {
+  position: absolute;
+  top: 1vh;
+  height: 100%;
+  z-index: -1;
+  left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  svg {
+      top: 1vh;
+      height: 99%;
+  }
+}
