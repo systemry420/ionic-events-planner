@@ -1,103 +1,109 @@
 <ion-content>
-  <mat-vertical-stepper linear #stepper>
-    <mat-step [completed]="isForm1Valid">
-        <ng-template matStepLabel>Please enter your email and password</ng-template>
-        <form>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">Email</ion-label>
-                <ion-input type="text" [(ngModel)]="user.email" name="email"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">Password</ion-label>
-                <ion-input type="text" [(ngModel)]="user.password" name="password"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-button (click)="checkEmail(stepper)" expand="block">
-                Next
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Please enter your additional info</ng-template>
-      <form (ngSubmit)="onSignup()">
-        <ion-grid>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">First Name</ion-label>
-                <ion-input type="text" [(ngModel)]="user.firstName" name="firstName"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">Last Name</ion-label>
-                <ion-input type="text" [(ngModel)]="user.lastName" name="lastName"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">Address</ion-label>
-                <ion-input type="text" [(ngModel)]="user.address" name="address"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">Job</ion-label>
-                <ion-input type="text" [(ngModel)]="user.job" name="job"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">Mobile Number</ion-label>
-                <ion-input type="text" [(ngModel)]="user.mobileNumber" name="mobileNumber"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">Age</ion-label>
-                <ion-input type="number" [(ngModel)]="user.age" name="age" min="0"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3">
-              <ion-item>
-                <ion-label class="label" position="floating">Gender</ion-label>
-                <ion-input type="text" [(ngModel)]="user.gender" name="gender"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col size-sm="6" offset-sm="3" class="ion-padding">
-              <ion-button type="submit" color="danger" expand="block">
-                Signup
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </form>
-    </mat-step>
-  </mat-vertical-stepper>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <mat-vertical-stepper linear #stepper>
+          <mat-step [completed]="isForm1Valid">
+              <ng-template matStepLabel>Please enter your email and password</ng-template>
+              <form>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">Email</ion-label>
+                      <ion-input type="text" [(ngModel)]="user.email" name="email"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">Password</ion-label>
+                      <ion-input type="text" [(ngModel)]="user.password" name="password"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-button (click)="checkEmail(stepper)" expand="block">
+                      Next
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Please enter your additional info</ng-template>
+            <form (ngSubmit)="onSignup()">
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">First Name</ion-label>
+                      <ion-input type="text" [(ngModel)]="user.firstName" name="firstName"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">Last Name</ion-label>
+                      <ion-input type="text" [(ngModel)]="user.lastName" name="lastName"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">Address</ion-label>
+                      <ion-input type="text" [(ngModel)]="user.address" name="address"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">Job</ion-label>
+                      <ion-input type="text" [(ngModel)]="user.job" name="job"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">Mobile Number</ion-label>
+                      <ion-input type="text" [(ngModel)]="user.mobileNumber" name="mobileNumber"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">Age</ion-label>
+                      <ion-input type="number" [(ngModel)]="user.age" name="age" min="0"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label class="label" position="floating">Gender</ion-label>
+                      <ion-input type="text" [(ngModel)]="user.gender" name="gender"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="ion-padding">
+                    <ion-button type="submit" color="danger" expand="block">
+                      Signup
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </form>
+          </mat-step>
+        </mat-vertical-stepper>
+      
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

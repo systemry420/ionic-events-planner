@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { EventService } from 'src/app/services/event/event.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -14,7 +15,11 @@ export class HomePage implements OnInit {
   homeEvents
   currentUser
 
-  constructor(private authService: AuthService, private userService: UserService, private eventService: EventService) { }
+  constructor(  private menu: MenuController,
+    private authService: AuthService, private userService: UserService, private eventService: EventService) { 
+    this.menu.enable(true, 'custom');
+  }
+
 
   ngOnInit() {
     this.eventService.getEvents().subscribe(data=>{

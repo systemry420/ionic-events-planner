@@ -8,6 +8,7 @@ import { ToastService } from 'src/app/services/toast/toast.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/shared/user.interface';
 import { AuthResponse } from "../../services/auth/auth.service";
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-auth',
@@ -21,7 +22,9 @@ export class AuthPage implements OnInit {
   isLoading = false
   error: string = null
 
-  constructor(private alertCtrl: AlertService, private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { }
+  constructor(private menu: MenuController, private alertCtrl: AlertService, private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { 
+    this.menu.enable(false, 'custom');
+  }
 
   ngOnInit() {
   }
