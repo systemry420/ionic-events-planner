@@ -21,23 +21,24 @@ export class HomePage implements OnInit {
     private eventService: EventService,
     ) {
       // the lang to use, if the lang isn't available, it will use the current loader to get them
+      this.menu.enable(true, 'custom');
   }
 
   public selectedIndex = 0;
   public appPages = [
     {
       title: 'Main',
-      url: 'main',
+      url: 'home/main',
       icon: 'home'
     },
     {
       title: 'Schedule',
-      url: 'schedule',
+      url: 'home/schedule',
       icon: 'calendar'
     },
     {
       title: 'Preferences',
-      url: 'preferences',
+      url: 'home/preferences',
       icon: 'settings'
     }
   ];
@@ -45,7 +46,6 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-    this.menu.enable(true, 'custom');
     this.eventService.getEvents().subscribe(data=>{
       this.homeEvents = data
     })

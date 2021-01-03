@@ -7,7 +7,6 @@ import * as moment from 'moment';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { EventService } from 'src/app/services/event/event.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
-import { IEvent } from '../../shared/event.interface'
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({

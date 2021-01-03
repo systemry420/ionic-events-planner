@@ -23,7 +23,7 @@ export class AuthPage implements OnInit {
   error: string = null
 
   constructor(private menu: MenuController, private alertCtrl: AlertService, private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { 
-    this.menu.enable(false, 'custom');
+    // this.menu.enable(false, 'custom');
   }
 
   ngOnInit() {
