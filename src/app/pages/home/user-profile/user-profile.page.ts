@@ -38,17 +38,15 @@ export class UserProfilePage implements OnInit {
   }
 
   getUser() {
-    // this.userService.getCurrentUser()
-    // .subscribe(users => {
-    //   this.authService.user.subscribe(data=> {
-    //     users.forEach((user: any) => {
-    //       if(user.username == data.email) {
-    //         this.user = user
-    //       }
-    //     });
-    //   })
-    // })
+    this.authService.user.subscribe(data=>{
+      this.userService.getUserData(data.id)
+      .subscribe((d:any)=>{
+        console.log(d)
+        this.user = d
+      })
+    })
   }
+
 
   updateInfo() {
 

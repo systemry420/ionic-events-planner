@@ -24,25 +24,15 @@ export class UserService {
           }, err => reject(err));
     });
   }
-user
-  getUsers() {
-    return this.firestore.collection('users').valueChanges()
-  }
 
+  // getUsers() {
+  //   return this.firestore.collection('users').valueChanges()
+  // }
+
+  // used by: home, user-profile
   getUserData(id) {
-    return this.firestore.collection('users').doc(id)
-    .valueChanges()
+    return this.firestore.collection('users').doc(id).valueChanges()
   }
 
-ids = []
-  getIDs() {
-    this.users = this.firestore.collection('users').snapshotChanges()
-    .subscribe(actions => {
-      return actions.map(a => {
-        const id = a.payload.doc.id;
-        this.ids.push(id);
-      });
-    });
-  }
 
 }

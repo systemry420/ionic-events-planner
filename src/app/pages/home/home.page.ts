@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { EventService } from 'src/app/services/event/event.service';
@@ -12,14 +12,26 @@ import { IEvent } from '../../shared/event.interface'
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  @ViewChild('menu') menu;
+  // @ViewChild('menu') menu;
   homeEvents
-  currentUserData
+  currentUserData: User = {
+      firstName: '',
+      lastName: '',
+      address: '',
+      job: '',
+      mobileNumber: '',
+      age: 0,
+      gender: '',
+      email: '',
+      events: [],
+      password: '',
+  }
 
   constructor(
     private authService: AuthService,
     private userService: UserService,
     private eventService: EventService,
+    private menu: MenuController
     ) {
       // the lang to use, if the lang isn't available, it will use the current loader to get them
   }
@@ -43,42 +55,14 @@ export class HomePage implements OnInit {
     }
   ];
 
-  ionViewWillEnter() {
-    this.menu.enable(true);
-  }
-
   ngOnInit() {
-    this.getUser()
-    this.eventService.getEvents().subscribe(data=>{
-      this.homeEvents = data
-    })
-  }
-
-  userId
-
-  getUser() {
-      this.authService.user.subscribe(data=>{
-        this.userId = data.id //localID
-        // console.log(this.userId);
-        
-        let ids = this.getAllUsersID()
-        // console.log(ids);
-        ids.forEach(id => {
-          if(id == data.id) {
-            this.userService.getUserData(id)
-            .subscribe(data=> {
-              this.currentUserData = data
-              // console.log(data);
-            })
-            return;
-          }
-        })
-      })
-  }
-
-  getAllUsersID() {
-    this.userService.getIDs()
-    return this.userService.ids
+    this.menu.enable(true);
+    this.authService.user.subscribe((data) => {
+      this.userService.getUserData(data.id).subscribe((d: any) => {
+        console.log(d);
+        this.currentUserData = d;
+      });
+    });
   }
 
 }
