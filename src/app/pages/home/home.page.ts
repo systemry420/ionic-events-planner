@@ -20,12 +20,32 @@ export class HomePage implements OnInit {
     private userService: UserService,
     private eventService: EventService,
     ) {
-    this.menu.enable(true, 'custom');
       // the lang to use, if the lang isn't available, it will use the current loader to get them
   }
 
+  public selectedIndex = 0;
+  public appPages = [
+    {
+      title: 'Main',
+      url: 'main',
+      icon: 'home'
+    },
+    {
+      title: 'Schedule',
+      url: 'schedule',
+      icon: 'calendar'
+    },
+    {
+      title: 'Preferences',
+      url: 'preferences',
+      icon: 'settings'
+    }
+  ];
+
+
 
   ngOnInit() {
+    this.menu.enable(true, 'custom');
     this.eventService.getEvents().subscribe(data=>{
       this.homeEvents = data
     })

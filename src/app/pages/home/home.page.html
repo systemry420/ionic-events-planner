@@ -1,70 +1,45 @@
-<ion-header>
-  <svg width="1142" height="89" viewBox="0 0 1142 89" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 77.6632C61.7297 77.6632 266.209 103.171 1142 77.6632V2.21975e-06H0V77.6632Z" fill="#309CFF"/>
-    <path d="M0 77.6632C61.7297 77.6632 266.209 103.171 1142 77.6632V2.21975e-06H0V77.6632Z" fill="#309CFF"/>
-    <path d="M0 6.70723e-07C462.973 117.407 706.034 67.868 1142 15.1074V1.48889e-05L0 6.70723e-07Z" fill="#3340B5"/>
-    </svg>
-
-
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title [innerHTML]='"Next schedule in:" | translate'></ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size-sm="10" offset-sm="1">
-        <ion-list>
-          <ion-list-header>
-            <h1 class="ion-text-center">{{ "Upcoming Events" | translate}}</h1>
-          </ion-list-header>
-          <ion-card *ngFor="let ev of homeEvents">
-            <ion-card-header>
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    <ion-card-title>
-                      {{ ev.title }}
-                    </ion-card-title>
-                  </ion-col>
-                  <!-- <ion-col>
-                    <ion-label>
-                      {{ ev.status }}
-                    </ion-label>
-                  </ion-col> -->
-                </ion-row>
-                <ion-row class="info">
-                  <ion-col size="8">
-                    <ion-label class="date">
-                      <ion-icon name="today" color="danger" style="zoom:1.2;"></ion-icon>
-                      {{ ev.dates }}
-                    </ion-label>
-                  </ion-col>
-                  <ion-col>
-                    <ion-label class="city"  class="ion-text-right">
-                      <ion-icon name="location" color="warning" style="zoom:1.4;"></ion-icon>
-                      {{ ev.location.city }}
-                    </ion-label>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-grid>
-                <ion-row>
-                  <ion-text class="tag" *ngFor="let tag of ev.tags">
-                    {{ tag }}
-                  </ion-text>
-                </ion-row>
-              </ion-grid>
-            </ion-card-content>
-          </ion-card>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+<ion-split-pane contentId="main-content" persistent="true">
+  <ion-menu contentId="main-content" persistent="true"  content="content"  menuId="custom">
+    <ion-content #content>
+      <ion-list id="inbox-list" class="ion-no-border">
+        <ion-menu-toggle auto-hide="false">
+          <ion-item [routerLink]="['home/user-profile']">
+            <ion-grid>
+              <ion-row>
+                <ion-col size-xs="3">
+                  <ion-avatar>
+                    <img src="https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png"
+                    alt="user" width="20" />
+                  </ion-avatar>
+                </ion-col>
+                <ion-col size-xs="9">
+                  <ion-grid>
+                  <ion-row>
+                    <!-- <ion-list-header>{{currentUser.firstName}}</ion-list-header> -->
+                  </ion-row>
+                  <ion-row class="ion-text-wrap">
+                    <!-- <ion-note>{{currentUser.email}}</ion-note> -->
+                  </ion-row>
+                </ion-grid>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+          <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+            <ion-label>{{ p.title | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      <svg viewBox="0 0 296 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
+        <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
+        <path d="M0 113.017C122 -5.30332 133 117.826 296 99.5494V164H0V113.017Z" fill="#3340B5"/>
+      </svg>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content">
+  </ion-router-outlet>
+</ion-split-pane>
