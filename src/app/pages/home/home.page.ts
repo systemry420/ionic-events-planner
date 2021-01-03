@@ -59,7 +59,6 @@ export class HomePage implements OnInit {
     this.menu.enable(true);
     this.authService.user.subscribe((data) => {
       this.userService.getUserData(data.id).subscribe((d: any) => {
-        console.log(d);
         this.currentUserData = d;
       });
     });

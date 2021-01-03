@@ -41,7 +41,6 @@ export class UserProfilePage implements OnInit {
     this.authService.user.subscribe(data=>{
       this.userService.getUserData(data.id)
       .subscribe((d:any)=>{
-        console.log(d)
         this.user = d
       })
     })
@@ -49,19 +48,17 @@ export class UserProfilePage implements OnInit {
 
 
   updateInfo() {
-
-    let docs = this.firestore.collection('users').snapshotChanges()
-    docs.subscribe( actions=>{
-      return actions.map(d =>{
-        console.log(d.payload.doc.id);
+    this.authService.user.subscribe(user=>{
+      this.userService.updateUserData(user.id, this.user)
+      .then(res => {
+        console.log("success");
+        
+      }, 
+      error=>{
+        console.log("something went wrong");
         
       })
-      
     })
-
-    console.log(this.user.email);
-    
-    
   }
 
 }

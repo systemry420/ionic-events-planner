@@ -34,5 +34,16 @@ export class UserService {
     return this.firestore.collection('users').doc(id).valueChanges()
   }
 
+  updateUserData(id, data) {
+    return new Promise<any>((resolve, reject) =>{
+      this.firestore
+          .collection("users")
+          .doc(id)
+          .update(data)
+          .then(res => {
+            resolve(res)
+          }, err => reject(err));
+    });
+  }
 
 }
