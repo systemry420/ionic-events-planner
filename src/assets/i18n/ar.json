@@ -28,5 +28,15 @@
     "Job": "الوظيفة",
     "Mobile Number": "رقم الهاتف",
     "Age": "العمر",
-    "Gender": "الجنس"
+    "Gender": "الجنس",
+    "Ok": "موافق",
+    "Cancel": "إلغاء",
+    "Please provide a title for your event!": "يرجى تقديم عنوان لحدثك!",
+    "Please specify a starting date on calendar!": "يرجى تحديد تاريخ البدء",
+    "Are u sure you want to proceed with current location?": "هل أنت متأكد أنك تريد المتابعة مع الموقع الحالي؟",
+    "Your event has been saved.": "تم حفظ الحدث الخاص بك.",
+    "Yes": "نعم",
+    "No": "لا",
+    "Confirm": "تأكيد",
+    "Oops": "حدث خطأ"
 }

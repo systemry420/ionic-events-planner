@@ -16,7 +16,6 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class SchedulePage implements OnInit {
     @ViewChild('stepper') stepper ;
-    public translate: TranslateService
 
     isStep1Valid = false
     resetForm = false
@@ -49,6 +48,7 @@ export class SchedulePage implements OnInit {
     constructor(private router: Router,
       private alertCtrl: AlertService,
       private toast: ToastService,
+      public translate: TranslateService,
       private eventService: EventService,
       public toastController: ToastController) {
     }
@@ -146,14 +146,29 @@ export class SchedulePage implements OnInit {
         color: 'danger'
       }
     }
+ lang = this.translate.getLangs()
 
     step1Completed(stepper) {
       console.log(this.evTitle, this.selectedDates);
       if(this.evTitle == '') {
-        this.alertCtrl.presentAlert('Please provide a title for your event!');
+        if(this.lang[0] == 'ar') {
+          this.translate.get('Please provide a title for your event!')
+          .subscribe((res: string) => {
+            this.alertCtrl.presentAlert(res);
+          });
+        } else {
+          this.alertCtrl.presentAlert('Please provide a title for your event!');
+        }
         return;
       } else if(this.selectedDates.length == 0) {
-        this.alertCtrl.presentAlert('Please specify a starting date on calendar!');
+        if(this.lang[0] == 'ar') {
+          this.translate.get('Please specify a starting date on calendar!')
+          .subscribe((res: string) => {
+            this.alertCtrl.presentAlert(res);
+          });
+        } else {
+          this.alertCtrl.presentAlert('Please specify a starting date on calendar!');
+        }
       }
       else {
         this.isStep1Valid = true
@@ -162,9 +177,19 @@ export class SchedulePage implements OnInit {
     }
 
     checkCurrentLocation() {
+      let message = ''
       if(this.lat == this.upLat && this.lng == this.upLng) {
+        if(this.lang[0] == 'ar') {
+          this.translate.get('Are u sure you want to proceed with current location?')
+          .subscribe((res: string) => {
+            message = res
+          });
+        } else {
+          message = 'Are u sure you want to proceed with current location?'
+        }
+
         this.alertCtrl
-        .presentAlertConfirm('Are u sure you want to proceed with current location?')
+        .presentAlertConfirm(message)
         .then(res=> {
           if(res == 'ok') {
             this.submitEvent()
