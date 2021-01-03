@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <svg width="1142" height="89" viewBox="0 0 1142 89" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 77.6632C61.7297 77.6632 266.209 103.171 1142 77.6632V2.21975e-06H0V77.6632Z" fill="#309CFF"/>
     <path d="M0 77.6632C61.7297 77.6632 266.209 103.171 1142 77.6632V2.21975e-06H0V77.6632Z" fill="#309CFF"/>
@@ -10,18 +10,17 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Main</ion-title>
-    <!-- <ion-title [innerHTML]='"Next schedule in:" | translate'></ion-title> -->
+    <ion-title [innerHTML]='"Next schedule in:" | translate'></ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding-top">
   <ion-grid>
     <ion-row>
       <ion-col size-sm="10" offset-sm="1">
-        <ion-list>
+        <ion-list class="ion-padding-top">
           <ion-list-header>
-            <!-- <h1 class="ion-text-center">{{ "Upcoming Events" | translate}}</h1> -->
+            <h1 class="ion-text-center">{{ "Upcoming Events" | translate}}</h1>
           </ion-list-header>
           <ion-card *ngFor="let ev of homeEvents">
             <ion-card-header>

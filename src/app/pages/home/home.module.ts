@@ -11,6 +11,7 @@ import { PreferencesPage } from './preferences/preferences.page';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouteReuseStrategy } from '@angular/router';
 import { HomePage } from './home.page';
+import { MainPage } from './main/main.page';
 
 @NgModule({
   imports: [
@@ -22,6 +23,8 @@ import { HomePage } from './home.page';
   ],
   declarations: [
     UserProfilePage,
+    MainPage,
+    
     PreferencesPage
   ],
   providers: [

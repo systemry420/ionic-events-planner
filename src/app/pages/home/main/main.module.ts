@@ -15,6 +15,6 @@ import { MainPage } from './main.page';
     IonicModule,
     MainPageRoutingModule
   ],
-  declarations: [MainPage]
+  declarations: []
 })
 export class MainPageModule {}

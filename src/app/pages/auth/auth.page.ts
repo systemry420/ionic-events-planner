@@ -23,10 +23,13 @@ export class AuthPage implements OnInit {
   error: string = null
 
   constructor(private menu: MenuController, private alertCtrl: AlertService, private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { 
-    // this.menu.enable(false, 'custom');
   }
-
+  
   ngOnInit() {
+  }
+  
+  ionViewWillEnter() {
+    this.menu.enable(false, 'custom');
   }
 
   switchMode() {
@@ -39,7 +42,7 @@ export class AuthPage implements OnInit {
 
     this.authService.login(email, password)
     .subscribe(respData => {
-        console.log(respData);
+        // console.log(respData);
 
         // this.isLoading = false
         if(respData.registered) {

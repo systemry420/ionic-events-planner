@@ -38,16 +38,16 @@ export class UserProfilePage implements OnInit {
   }
 
   getUser() {
-    this.userService.getCurrentUser()
-    .subscribe(users => {
-      this.authService.user.subscribe(data=> {
-        users.forEach((user: any) => {
-          if(user.username == data.email) {
-            this.user = user
-          }
-        });
-      })
-    })
+    // this.userService.getCurrentUser()
+    // .subscribe(users => {
+    //   this.authService.user.subscribe(data=> {
+    //     users.forEach((user: any) => {
+    //       if(user.username == data.email) {
+    //         this.user = user
+    //       }
+    //     });
+    //   })
+    // })
   }
 
   updateInfo() {

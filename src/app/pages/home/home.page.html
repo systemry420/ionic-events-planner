@@ -1,5 +1,5 @@
 <ion-split-pane contentId="main-content" persistent="true">
-  <ion-menu contentId="main-content" persistent="true"  content="content"  menuId="custom">
+  <ion-menu contentId="main-content" persistent="true"  content="content"  menuId="custom" #menu>
     <ion-content #content>
       <ion-list id="inbox-list" class="ion-no-border">
         <ion-menu-toggle auto-hide="false">
@@ -15,10 +15,10 @@
                 <ion-col size-xs="9">
                   <ion-grid>
                   <ion-row>
-                    <!-- <ion-list-header>{{currentUser.firstName}}</ion-list-header> -->
+                    <!-- <ion-list-header>{{currentUserData.firstName}}</ion-list-header> -->
                   </ion-row>
                   <ion-row class="ion-text-wrap">
-                    <!-- <ion-note>{{currentUser.email}}</ion-note> -->
+                    <!-- <ion-note>{{currentUserData.email}}</ion-note> -->
                   </ion-row>
                 </ion-grid>
                 </ion-col>
@@ -40,6 +40,5 @@
       </svg>
     </ion-content>
   </ion-menu>
-  <ion-router-outlet id="main-content">
-  </ion-router-outlet>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-split-pane>

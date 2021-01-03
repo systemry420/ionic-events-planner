@@ -19,6 +19,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     IonicModule,
     AuthPageRoutingModule
   ],
+  exports: [
+    AuthPage
+  ],
   declarations: [AuthPage, LoginComponent, SignupComponent]
 })
 export class AuthPageModule {}

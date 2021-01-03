@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
     this.userService.submitUserData(this.userID, this.user)
     .then(res=>{
       this.toast.presentToast("Your account is created successfully!")
-      this.signupEvent.emit();;
+      this.signupEvent.emit();
     }, err =>{
       this.alertCtrl.presentAlert(err);
     })

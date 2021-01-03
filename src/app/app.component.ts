@@ -74,20 +74,20 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     if(this.authService.autoLogin()) {
       // this.router.navigate(['home'])
-      this.getUser()
+      // this.getUser()
     }
   }
 
-  getUser() {
-    this.userService.getCurrentUser()
-    .subscribe(users => {
-      this.authService.user.subscribe(data=> {
-        users.forEach((user: any) => {
-          if(user.username == data.email) {
-            this.currentUser = user
-          }
-        });
-      })
-    })
-  }
+  // getUser() {
+  //   this.userService.getCurrentUser()
+  //   .subscribe(users => {
+  //     this.authService.user.subscribe(data=> {
+  //       users.forEach((user: any) => {
+  //         if(user.username == data.email) {
+  //           this.currentUser = user
+  //         }
+  //       });
+  //     })
+  //   })
+  // }
 }
