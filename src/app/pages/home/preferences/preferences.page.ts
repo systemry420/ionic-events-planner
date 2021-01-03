@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-preferences',
@@ -8,16 +9,20 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class PreferencesPage implements OnInit {
   lang
-  constructor(public translate: TranslateService) { }
+  constructor(@Inject(DOCUMENT) private doc, public translate: TranslateService) { }
 
   ngOnInit() {
   }
 
   changeLanguage() {
-    if(this.lang == 'ar')
+    if(this.lang == 'ar'){
       this.translate.use('ar');
-    else
+      this.doc.documentElement.dir = 'rtl';
+    }
+    else{
       this.translate.use('en');
+      this.doc.documentElement.dir = 'ltr';
+    }
   }
 
 }
