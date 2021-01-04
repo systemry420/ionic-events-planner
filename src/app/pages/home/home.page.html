@@ -12,7 +12,7 @@
                     alt="user" width="20" />
                   </ion-avatar>
                 </ion-col>
-                <ion-col size-xs="9">
+                <ion-col size-xs="9" *ngIf="currentUserData.firstName && currentUserData.email">
                   <ion-grid>
                   <ion-row>
                     <ion-list-header>{{currentUserData.firstName}}</ion-list-header>

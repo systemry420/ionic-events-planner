@@ -27,7 +27,8 @@ export class SignupComponent implements OnInit {
     gender: 'a',
     email: 'a@a.com',
     password: 'qwertyuiop',
-    events: []
+    events: [],
+    image: 'https://www.lse.ac.uk/International-Inequalities/Assets/Images/BlankImage.jpg'
   };
 
   constructor(private alertCtrl: AlertService, private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { 

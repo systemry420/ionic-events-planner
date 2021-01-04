@@ -25,6 +25,7 @@ export class HomePage implements OnInit {
       email: '',
       events: [],
       password: '',
+      image: ''
   }
 
   constructor(

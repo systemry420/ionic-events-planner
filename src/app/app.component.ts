@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
     gender: '',
     email: '',
     password: '',
-    events: []
+    events: [],
+    image: ''
   };
 
   public selectedIndex = 0;

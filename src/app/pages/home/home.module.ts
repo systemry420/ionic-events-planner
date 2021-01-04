@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouteReuseStrategy } from '@angular/router';
 import { HomePage } from './home.page';
 import { MainPage } from './main/main.page';
+import { ImageComponent } from './user-profile/image/image.component';
 
 @NgModule({
   imports: [
@@ -24,8 +25,8 @@ import { MainPage } from './main/main.page';
   declarations: [
     UserProfilePage,
     MainPage,
-    
-    PreferencesPage
+    PreferencesPage,
+    ImageComponent
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

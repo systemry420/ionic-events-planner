@@ -11,12 +11,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-row class="ion-justify-content-center ion-padding-vertical">
-    <ion-col size="3">
+  <ion-row class="ion-justify-content-center ion-padding">
+    <ion-col size='4' offset="2">
       <ion-avatar>
-        <img src="https://www.lse.ac.uk/International-Inequalities/Assets/Images/BlankImage.jpg"
-          alt="user" />
+        <img [src]="user.image" alt="user" />
       </ion-avatar>
+      <app-image (imagePick)="onImagePicked($event)"></app-image>
     </ion-col>
   </ion-row>
   <form (ngSubmit)="updateInfo()">

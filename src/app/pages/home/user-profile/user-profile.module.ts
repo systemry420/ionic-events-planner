@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { UserProfilePageRoutingModule } from './user-profile-routing.module';
 
 import { UserProfilePage } from './user-profile.page';
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
   imports: [
