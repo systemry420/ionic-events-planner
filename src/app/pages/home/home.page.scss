@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*, html, ion-label {
+    font-family: 'Montserrat';
+}
+
 ion-menu ion-content {
     --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
@@ -114,11 +120,20 @@ ion-item.selected {
     --color: var(--ion-color-primary);
 }
 
+ion-content {
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+}
+
 svg {
     position: absolute;
-    top: 1vh;
+    bottom: 0;
     height: 100%;
-    z-index: -1;
+    z-index: 1;
     left: 0;
 }
 

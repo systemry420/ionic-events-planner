@@ -27,15 +27,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-*, ion-label.label {
+*, html, body, ion-label.label, ion-label {
     font-family: 'Montserrat';
-}
-
-ion-content {
-    --offset-bottom: auto!important;
-    --overflow: hidden;
-    overflow: auto;
-    &::-webkit-scrollbar {
-      display: none;
-    }
 }

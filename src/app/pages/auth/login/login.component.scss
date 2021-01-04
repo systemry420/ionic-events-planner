@@ -10,12 +10,13 @@ ion-text {
 svg {
     position: absolute;
     top: 1vh;
-    height: 100%;
+    height: 100vh;
     z-index: -1;
 }
 
 ion-item {
     margin-top: 2%;
+
     ion-label {
         margin-bottom: 2%;
     }
