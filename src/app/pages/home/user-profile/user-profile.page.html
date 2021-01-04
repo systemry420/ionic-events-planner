@@ -1,8 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
+      <ion-back-button  slot="start" [routerLink]="['../../home']"></ion-back-button>
     <ion-title>{{"User Profile" | translate}}</ion-title>
     <ion-button class="ion-border-none" slot="end" (click)="updateInfo()">
       <ion-icon name="checkmark-outline"></ion-icon>

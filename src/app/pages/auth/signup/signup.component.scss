@@ -7,6 +7,15 @@ ion-text {
     font-family: 'Montserrat';
 }
 
+mat-vertical-stepper {
+    background-color: transparent;
+    ::ng-deep .mat-step-header {
+        div.mat-step-label {
+            color: #afafaf;
+        }
+    }
+}
+
 svg {
     position: absolute;
     top: -2%;

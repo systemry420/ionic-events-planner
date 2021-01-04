@@ -86,20 +86,6 @@ export class UserProfilePage implements OnInit {
   onImagePicked(image) {
     console.log(image);
     this.user.image = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
-    // let imageFile;
-    // if(typeof image == 'string') {
-    //   try{
-    //     imageFile = base64toBlob(image.replace('data:image/jpeg;base64', ''), 'image/jpeg')
-    //   } catch(error) {
-    //     console.log(error);
-    //     return;
-    //   }
-    // } else {
-    //   imageFile = image
-    // }
-    // this.user.image = imageFile
-    // console.log(this.user);
-    
   }
 
 }

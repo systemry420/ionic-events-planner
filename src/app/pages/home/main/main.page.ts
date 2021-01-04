@@ -3,6 +3,7 @@ import { EventService } from 'src/app/services/event/event.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-main',
@@ -17,10 +18,12 @@ export class MainPage implements OnInit {
     private eventService: EventService,
     public translate: TranslateService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private menu: MenuController
     ) { }
 
   ngOnInit() {
+    this.menu.enable(true, 'custom');
     this.eventService.getEvents().subscribe(data=>{
       this.homeEvents = data
     })
