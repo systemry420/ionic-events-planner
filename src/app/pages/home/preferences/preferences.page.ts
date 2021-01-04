@@ -1,6 +1,7 @@
 import { Component, Renderer2, OnInit, Inject } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {DOCUMENT} from '@angular/common';
+import { ThemeService } from '../../../services/theme/theme.service'
 
 @Component({
   selector: 'app-preferences',
@@ -11,7 +12,7 @@ export class PreferencesPage implements OnInit {
   lang
   constructor(
     @Inject(DOCUMENT) private doc,
-    private renderer: Renderer2,
+    private themeService: ThemeService,
     public translate: TranslateService) { }
 
   ngOnInit() {
@@ -30,11 +31,9 @@ export class PreferencesPage implements OnInit {
 
   onToggleTheme(ev) {
     // preserve in localstorage
-    if(ev.target.checked) {
-      this.renderer.setAttribute(document.body, 'color-theme', 'dark')
-    } else {
-      this.renderer.setAttribute(document.body, 'color-theme', 'light')
-    }
+    console.log(ev);
+    
+    this.themeService.setMode(ev.detail.checked)
   }
 
 }

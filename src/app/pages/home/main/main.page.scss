@@ -30,21 +30,15 @@ ion-card {
     }
 
     .info {
-        color: #444;
+        color: #555;
         display: flex;
         justify-content: space-around;
     }
 
-    .date, .city {
-        display: flex;
-        align-items: center;
-        line-height: 1%;
-
-        ion-icon {
-            margin-right: 5px;
-        }
+    
+    ion-icon {
+        margin-right: 5px;
     }
-
     .tag {
         background-color: lightgray;
         margin: 0.2em;

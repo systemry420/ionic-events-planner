@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { UserService } from './services/user/user.service';
 import { User } from './shared/user.interface';
 import {TranslateService} from '@ngx-translate/core';
+import { ThemeService } from './services/theme/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -53,7 +54,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private authService: AuthService,
     private router: Router,
-    private userService: UserService,
+    private themeService: ThemeService,
     private platform: Platform,
     translate: TranslateService
   ) {
@@ -77,6 +78,10 @@ export class AppComponent implements OnInit {
       // this.router.navigate(['home'])
       // this.getUser()
     }
+
+    this.themeService.setMode(
+      localStorage.getItem('dark-mode')
+    )
   }
 
   // getUser() {
