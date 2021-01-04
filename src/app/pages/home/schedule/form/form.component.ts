@@ -20,6 +20,7 @@ export class FormComponent implements OnInit {
   evStyle: string = 'daily';
   evOccurrence: number = 1;
   evTitle: string = '';
+  tags
 
   options: CalendarComponentOptions
 
@@ -56,5 +57,9 @@ export class FormComponent implements OnInit {
 
   setOccurrence() {
     this.occurEvent.emit(this.evOccurrence)
+  }
+
+  onTagAdded() {
+    console.log(this.tags)
   }
 }

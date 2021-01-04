@@ -4,6 +4,17 @@
     <ion-input [value]="evTitle" placeholder="{{'Event title' | translate}}" (ionChange)="setTitle()" name="evTitle" [(ngModel)]="evTitle" required></ion-input>
   </ion-item>
   <ion-item>
+    <tag-input
+      theme='bootstrap'
+      (onAdd)="onTagAdded($event)"
+      class="tags"
+      maxItems="4"
+      name="tags"
+      [(ngModel)]="tags"
+      [separatorKeyCodes]="[37]">
+    </tag-input>
+  </ion-item>
+  <ion-item>
     <ion-select
       placeholder="One Time/Recurring"
       name="evType"

@@ -15,6 +15,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { MapComponent } from './map/map.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { TranslateModule } from '@ngx-translate/core';
+import { TagInputModule } from 'ngx-chips';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { TranslateModule } from '@ngx-translate/core';
     CalendarModule,
     TranslateModule.forChild(),
     GoogleMapsModule,
-    SchedulePageRoutingModule
+    SchedulePageRoutingModule,
+    TagInputModule
   ],
   declarations: [SchedulePage, FormComponent, MapComponent],
   providers: [Geolocation]
