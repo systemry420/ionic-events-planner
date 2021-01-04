@@ -21,7 +21,7 @@
           </ion-item>
           <ion-item>
             <ion-label>{{'Dark Theme' | translate}}</ion-label>
-            <ion-toggle></ion-toggle>
+            <ion-toggle (ionChange)="onToggleTheme($event)"></ion-toggle>
           </ion-item>
         </ion-list>
       </ion-col>

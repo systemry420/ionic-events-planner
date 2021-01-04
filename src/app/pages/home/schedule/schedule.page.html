@@ -14,9 +14,11 @@
         <mat-vertical-stepper [linear]="!isStep1Valid" #stepper>
           <mat-step [completed]="isStep1Valid">
               <ng-template matStepLabel>
-                {{ 'Specify your event details' | translate }}
+                <ion-text>
+                  {{'Specify your event details' | translate }}
+                </ion-text>
               </ng-template>
-      
+
               <app-form
                 [resetForm]="resetForm"
                 (typeEvent)="setType($event)"
@@ -24,7 +26,7 @@
                 (titleEvent)="setTitle($event)"
                 (occurEvent)="setOccurrence($event)">
               </app-form>
-      
+
               <ion-calendar
                 showToggleButtons = "true"
                 [options] = "options"
@@ -33,11 +35,15 @@
                 [type]="dateType"
                 [format]="'YYYY-MM-DD'">
               </ion-calendar>
-      
+
               <button class="next" matButton (click)="step1Completed(stepper)">{{'Next' | translate}}</button>
           </mat-step>
           <mat-step>
-            <ng-template matStepLabel>{{'Specify the location' | translate}}</ng-template>
+            <ng-template matStepLabel>
+              <ion-text>
+                {{'Specify the location' | translate}}
+              </ion-text>
+            </ng-template>
             <app-map (mapEvent)="updateLocation($event)" (currrentLocation)="setLocation($event)"></app-map>
             <div>
               <ion-button color="danger" (click)="reset()" expand="block">{{'Reset' | translate}}</ion-button>

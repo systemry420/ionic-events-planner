@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular'
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { Plugins, Capacitor } from '@capacitor/core'
+
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth/auth.service';
 import { Router } from '@angular/router';
@@ -49,12 +50,11 @@ export class AppComponent implements OnInit {
   public labels = ['Family', 'Friends', 'Work', 'Travel', 'Reminders'];
 
   constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private authService: AuthService,
     private router: Router,
     private userService: UserService,
+    private platform: Platform,
     translate: TranslateService
   ) {
     this.initializeApp();
@@ -66,8 +66,9 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      if(Capacitor.isPluginAvailable('SplashScreen')) {
+        Plugins.SplashScreen.hide()
+      }
     });
   }
 

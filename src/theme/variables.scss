@@ -111,14 +111,14 @@ $app-theme: mat-light-theme((
   --ion-color-light-tint: #f5f6f9;
 }
 
-@media (prefers-color-scheme: dark) {
+// @media (prefers-color-scheme: dark) {
   /*
    * Dark Colors
    * -------------------------------------------
    */
 
-  body {
-    --ion-color-primary: #428cff;
+  body[color-theme="dark"] {
+    --ion-color-primary: #b100c9;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255,255,255;
@@ -187,8 +187,8 @@ $app-theme: mat-light-theme((
    * -------------------------------------------
    */
 
-  .ios body {
-    --ion-background-color: #000000;
+  .ios body[color-theme="dark"] {
+    --ion-background-color: #222;
     --ion-background-color-rgb: 0,0,0;
 
     --ion-text-color: #ffffff;
@@ -227,7 +227,7 @@ $app-theme: mat-light-theme((
    * -------------------------------------------
    */
 
-  .md body {
+  .md body[color-theme="dark"] {
     --ion-background-color: #121212;
     --ion-background-color-rgb: 18,18,18;
 
@@ -264,6 +264,6 @@ $app-theme: mat-light-theme((
 
     --ion-card-background: #1e1e1e;
   }
-}
+// }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

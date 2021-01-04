@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Renderer2, OnInit, Inject } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {DOCUMENT} from '@angular/common';
 
@@ -9,7 +9,10 @@ import {DOCUMENT} from '@angular/common';
 })
 export class PreferencesPage implements OnInit {
   lang
-  constructor(@Inject(DOCUMENT) private doc, public translate: TranslateService) { }
+  constructor(
+    @Inject(DOCUMENT) private doc,
+    private renderer: Renderer2,
+    public translate: TranslateService) { }
 
   ngOnInit() {
   }
@@ -22,6 +25,15 @@ export class PreferencesPage implements OnInit {
     else{
       this.translate.use('en');
       this.doc.documentElement.dir = 'ltr';
+    }
+  }
+
+  onToggleTheme(ev) {
+    // preserve in localstorage
+    if(ev.target.checked) {
+      this.renderer.setAttribute(document.body, 'color-theme', 'dark')
+    } else {
+      this.renderer.setAttribute(document.body, 'color-theme', 'light')
     }
   }
 
