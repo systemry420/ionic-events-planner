@@ -13,6 +13,7 @@ export class FormComponent implements OnInit {
   @Output() styleEvent = new EventEmitter()
   @Output() occurEvent = new EventEmitter()
   @Output() titleEvent = new EventEmitter()
+  @Output() tagsEvent = new EventEmitter()
   @Input() resetForm;
 
   // event data
@@ -59,7 +60,9 @@ export class FormComponent implements OnInit {
     this.occurEvent.emit(this.evOccurrence)
   }
 
-  onTagAdded() {
-    console.log(this.tags)
+  onTagAdded(ev) {
+    let t = this.tags.map(t=> t.value)
+    console.log(t);
+    this.tagsEvent.emit(t)
   }
 }

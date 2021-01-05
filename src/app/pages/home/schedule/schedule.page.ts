@@ -28,7 +28,7 @@ export class SchedulePage implements OnInit {
     selectedDates = [];
     location; updatedLocation;
     lat; lng; upLat; upLng;
-    tags = ['Development', 'Team work']
+    tags
 
     // calendar initial data
     selectedDay; selectedMonth; selectedYear
@@ -70,6 +70,10 @@ export class SchedulePage implements OnInit {
     setOccurrence(ev) {
       this.evOccurrence = ev
       this.setEventOnCalendar()
+    }
+
+    setTags(ev) {
+      this.tags = ev
     }
 
     getConfig(count, step) {
@@ -149,7 +153,7 @@ export class SchedulePage implements OnInit {
  lang = this.translate.getLangs()
 
     step1Completed(stepper) {
-      console.log(this.evTitle, this.selectedDates);
+      console.log(this.evTitle, this.tags, this.selectedDates);
       if(this.evTitle == '') {
         if(this.lang[0] == 'ar') {
           this.translate.get('Please provide a title for your event!')
