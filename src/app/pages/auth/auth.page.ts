@@ -53,33 +53,4 @@ export class AuthPage implements OnInit {
     )
   }
 
-
-  submitData(email, password) {
-    // let authObs: Observable<AuthResponse>
-
-    // this.isLoading = true
-    // if(this.isLoginview) {
-    //   authObs = this.authService.login(email, password)
-    // } else {
-    //   authObs = this.authService.signup(email, password)
-    // }
-
-    // authObs.subscribe(respData => {
-    //   console.log(respData);
-    //   if(respData.kind == "identitytoolkit#SignupNewUserResponse") {
-    //     // this.toast.presentToast("Your account is created successfully!")
-    //   }
-    //   // reset form
-    //   this.isLoading = false
-    //   if(respData.registered) {
-    //     this.router.navigate(['pages/home'])
-    //   }
-    // },
-    // error => {
-    //   this.isLoading = false
-    //   console.log(error);
-    //   this.alertCtrl.presentAlert(error);
-    // })
-  }
-
 }

@@ -6,6 +6,8 @@ import { UserService } from 'src/app/services/user/user.service';
 import { User } from '../../../shared/user.interface'
 import {TranslateService} from '@ngx-translate/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
+import { finalize } from 'rxjs/operators';
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
@@ -54,11 +56,14 @@ export class UserProfilePage implements OnInit {
     private firestore: AngularFirestore,
     private userService: UserService,
     private sanitizer: DomSanitizer,
-    private authService: AuthService
+    private authService: AuthService,
+    private afStorage: AngularFireStorage
   ) { }
 
   ngOnInit() {
     this.getUser()
+    console.log(this.user);
+    
   }
 
   getUser() {
@@ -82,10 +87,33 @@ export class UserProfilePage implements OnInit {
       })
     })
   }
+  ref: AngularFireStorageReference;
+  task: AngularFireUploadTask;
 
   onImagePicked(image) {
     console.log(image);
-    this.user.image = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    let dataUrl = image.dataUrl.substr(22)
+    console.log(dataUrl.substr(0, 10));
+
+    // this.profileImage = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    let upload = base64toBlob(dataUrl, 'image/' + image.format)
+
+    this.authService.user.subscribe(user => {
+      const filePath = user.id;
+      const storageRef = this.afStorage.ref(filePath);
+      const uploadTask = this.afStorage.upload(filePath, upload);
+
+      uploadTask.snapshotChanges().pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+            this.user.image = downloadURL
+            console.log('image uploaded successfully', this.user);
+            this.updateInfo()
+          });
+        })
+      ).subscribe();
+
+    })
   }
 
 }

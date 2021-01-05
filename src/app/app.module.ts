@@ -20,6 +20,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HomePage } from './pages/home/home.page';
 import { HomePageModule } from './pages/home/home.module';
 import { AuthPageModule } from './pages/auth/auth.module';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
