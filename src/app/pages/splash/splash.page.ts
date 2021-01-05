@@ -28,7 +28,7 @@ export class SplashPage implements OnInit {
       } else {
         this.router.navigate(['auth'])
       }
-    }, 1000);
+    }, 4000);
   }
 
 }

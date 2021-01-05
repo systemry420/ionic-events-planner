@@ -8,6 +8,8 @@ import {TranslateService} from '@ngx-translate/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
@@ -57,6 +59,8 @@ export class UserProfilePage implements OnInit {
     private userService: UserService,
     private sanitizer: DomSanitizer,
     private authService: AuthService,
+    private alertCtrl: AlertService,
+    private toast: ToastService,
     private afStorage: AngularFireStorage
   ) { }
 
@@ -79,10 +83,10 @@ export class UserProfilePage implements OnInit {
     if(this.userData) {
       this.userService.updateUserData(this.userData.id, this.user)
       .then(res => {
-        console.log(this.user);
+        this.toast.presentToast("Your info has been updated successfully!")
       },
       error=>{
-        console.log(error, "something went wrong");
+        this.alertCtrl.presentAlert("Something went wrong!")
       })
     }
   }

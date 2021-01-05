@@ -1,7 +1,15 @@
-.tags,
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*, html, body, ion-label.label,::placeholder {
+    font-family: 'Montserrat';
+}
+
+.ng2-tag-input,
+tag-input.tags,
 tag-input.item-native,
 tag-input div,
 tag-input tag-input-form form input{
     background: transparent;
     color: #999;
+    font-family: 'Montserrat';
 }

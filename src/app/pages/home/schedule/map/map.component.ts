@@ -1,5 +1,6 @@
 import { Component, Output, OnInit, ViewChild, ElementRef, EventEmitter } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-map',
@@ -13,18 +14,20 @@ export class MapComponent implements OnInit {
 
   map: google.maps.Map;
   marker: google.maps.Marker
-  lat = 34.0322318;
-  lng = 35.8901287;
+  lat = 34.10328;
+  lng = 36.23786;
 
-  constructor(private geolocation: Geolocation) {}
+  constructor(private geolocation: Geolocation,
+    private alertCtrl: AlertService,
+  ) {}
 
   ngOnInit() {
     this.geolocation.getCurrentPosition().then((resp) => {
       if(resp) {
         this.lat = resp.coords.latitude
         this.lng = resp.coords.longitude
+        console.log(this.lat, this.lng);
       }
-      // console.log(this.lat, this.lng);
       this.mapInitializer();
 
     }).catch((error) => {
@@ -39,7 +42,7 @@ export class MapComponent implements OnInit {
       zoom: 7,
     };
 
-    // console.log(this.lat, this.lng);
+    console.log(this.lat, this.lng);
 
     this.map = new google.maps.Map(this.gmap.nativeElement, mapOptions);
 
@@ -77,7 +80,7 @@ export class MapComponent implements OnInit {
             console.log("No results found");
           }
         } else {
-          console.log("Geocoder failed due to: " + status);
+          this.alertCtrl.presentAlert("Geocoder failed due to: " + status);
         }
       }
     );

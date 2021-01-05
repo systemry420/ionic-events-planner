@@ -9,7 +9,7 @@
                 <ion-col size-xs="3">
                   <ion-avatar>
                     <img [src]='currentUserData.image'
-                    alt="user" width="20" />
+                    alt="user" />
                   </ion-avatar>
                 </ion-col>
                 <ion-col size-xs="9" *ngIf="currentUserData.firstName && currentUserData.email">
@@ -32,12 +32,12 @@
             <ion-label>{{ p.title | translate }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
-        <!-- <svg viewBox="0 0 296 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
-          <path d="M0 48.0616C154.953 53.4969 67.5436 -45.4866 296 26.0894V164H0V48.0616Z" fill="#309CFF"/>
-          <path d="M0 113.017C122 -5.30332 133 117.826 296 99.5494V164H0V113.017Z" fill="#3340B5"/>
-        </svg> -->
       </ion-list>
+      <svg viewBox="0 0 296 401" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 72.5003C16 72.5003 66 167.268 296 0V401H0V72.5003Z" fill="#309CFF"/>
+        <path d="M0 72.5003C16 72.5003 66 167.268 296 0V401H0V72.5003Z" fill="#309CFF"/>
+        <path d="M2 400C277 218.283 46 170.637 296 0V158.105V400H2Z" fill="#3340B5"/>
+      </svg>
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="main-content"></ion-router-outlet>

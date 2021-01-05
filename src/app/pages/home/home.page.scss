@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-*, html, ion-label {
+*, html,
+ion-label,
+ion-menu,
+ion-item,
+ion-menu-toggle,
+ion-content {
     font-family: 'Montserrat';
 }
 
@@ -130,11 +135,14 @@ ion-content {
 }
 
 svg {
-    position: absolute;
+    position: relative;
     bottom: 0;
-    height: 100%;
+    margin: 0;
+    width: 110%;
+    padding: 0;
+    height: 70%;
     z-index: 1;
-    left: 0;
+    left: -3%;
 }
 
 @media screen and (max-width: 768px) {
