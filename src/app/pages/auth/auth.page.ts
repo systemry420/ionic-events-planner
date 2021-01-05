@@ -24,11 +24,8 @@ export class AuthPage implements OnInit {
 
   constructor(private menu: MenuController, private alertCtrl: AlertService, private userService: UserService, private toast: ToastService, private authService: AuthService, private router: Router) { 
   }
-  
+
   ngOnInit() {
-  }
-  
-  ionViewWillEnter() {
     this.menu.enable(false, 'custom');
   }
 

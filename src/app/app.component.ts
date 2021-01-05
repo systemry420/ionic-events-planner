@@ -83,18 +83,12 @@ export class AppComponent implements OnInit {
     this.themeService.setMode(
       localStorage.getItem('dark-mode')
     )
+
+    this.router.navigate(['splash'])
+    setTimeout(() => {
+      this.router.navigate(['auth'])
+    }, 5000);
+
   }
 
-  // getUser() {
-  //   this.userService.getCurrentUser()
-  //   .subscribe(users => {
-  //     this.authService.user.subscribe(data=> {
-  //       users.forEach((user: any) => {
-  //         if(user.username == data.email) {
-  //           this.currentUser = user
-  //         }
-  //       });
-  //     })
-  //   })
-  // }
 }
