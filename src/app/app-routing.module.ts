@@ -5,7 +5,7 @@ import { AuthGuard } from './pages/auth/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'splash',
     pathMatch: 'full'
   },
   {
@@ -16,7 +16,8 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule),
-  },  {
+  },
+  {
     path: 'splash',
     loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
   }

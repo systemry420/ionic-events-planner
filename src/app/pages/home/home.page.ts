@@ -58,11 +58,6 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.menu.enable(true);
-    this.authService.user.subscribe((data) => {
-      this.userService.getUserData(data.id).subscribe((d: any) => {
-        this.currentUserData = d;
-      });
-    });
   }
 
 }

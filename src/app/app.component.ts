@@ -75,19 +75,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.authService.autoLogin()) {
-      // this.router.navigate(['home'])
-      // this.getUser()
-    }
 
     this.themeService.setMode(
       localStorage.getItem('dark-mode')
     )
-
-    this.router.navigate(['splash'])
-    setTimeout(() => {
-      this.router.navigate(['auth'])
-    }, 5000);
 
   }
 
