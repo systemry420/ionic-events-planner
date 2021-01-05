@@ -22,6 +22,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  getUser() {
+    if(this.user !== null) {
+      return this.user
+    } else {
+      let user = JSON.parse(localStorage.getItem('userData'))
+      return user.id
+    }
+  }
+
   signup(email: string, password: string) {
     return this.http.post<AuthResponse>(
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDH0Dk6-prIn3d8_Xo4KEn6cVbmyDoYYw0',
@@ -59,6 +68,8 @@ export class AuthService {
 
   autoLogin() {
     const userData = JSON.parse(localStorage.getItem('userData'))
+    console.log(userData);
+    
     if(!userData){
       return;
     }

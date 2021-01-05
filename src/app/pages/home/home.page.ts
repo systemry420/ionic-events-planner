@@ -58,6 +58,18 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.menu.enable(true);
+    this.getUser()
+  }
+
+  getUser() {
+    let userData = JSON.parse(localStorage.getItem('userData'))
+    if(userData) {
+      console.log(userData);
+      this.userService.getUserData(userData.id)
+      .subscribe((d:any)=>{
+        this.currentUserData = d
+      })
+    }
   }
 
 }

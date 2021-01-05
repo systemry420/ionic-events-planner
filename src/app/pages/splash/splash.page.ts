@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ThemeService } from 'src/app/services/theme/theme.service';
 
 @Component({
   selector: 'app-splash',
@@ -13,13 +14,17 @@ export class SplashPage implements OnInit {
   constructor(
     private menu: MenuController,
     private authService: AuthService,
+    private themeService: ThemeService,
     private router: Router
   ) {}
 
   ngOnInit() {
     this.menu.enable(false, 'custom');
-    
-    
+
+    this.themeService.setMode(
+      localStorage.getItem('dark-mode')
+    )
+
     setTimeout(() => {
       this.splash = false
       if(this.authService.autoLogin()) {

@@ -75,11 +75,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.themeService.setMode(
-      localStorage.getItem('dark-mode')
-    )
-
   }
 
 }

@@ -62,30 +62,29 @@ export class UserProfilePage implements OnInit {
 
   ngOnInit() {
     this.getUser()
-    console.log(this.user);
-    
   }
 
+  userData = JSON.parse(localStorage.getItem('userData'))
   getUser() {
-    this.authService.user.subscribe(data=>{
-      this.userService.getUserData(data.id)
+    if(this.userData) {
+      console.log(this.userData);
+      this.userService.getUserData(this.userData.id)
       .subscribe((d:any)=>{
         this.user = d
       })
-    })
+    }
   }
 
-
   updateInfo() {
-    this.authService.user.subscribe(user=>{
-      this.userService.updateUserData(user.id, this.user)
+    if(this.userData) {
+      this.userService.updateUserData(this.userData.id, this.user)
       .then(res => {
         console.log(this.user);
       },
       error=>{
         console.log(error, "something went wrong");
       })
-    })
+    }
   }
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
@@ -98,8 +97,8 @@ export class UserProfilePage implements OnInit {
     // this.profileImage = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
     let upload = base64toBlob(dataUrl, 'image/' + image.format)
 
-    this.authService.user.subscribe(user => {
-      const filePath = user.id;
+    if(this.userData) {
+      const filePath = this.userData.id;
       const storageRef = this.afStorage.ref(filePath);
       const uploadTask = this.afStorage.upload(filePath, upload);
 
@@ -112,8 +111,7 @@ export class UserProfilePage implements OnInit {
           });
         })
       ).subscribe();
-
-    })
+    }
   }
 
 }
