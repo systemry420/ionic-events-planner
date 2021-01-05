@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Platform } from '@ionic/angular'
 
 import { Plugins, Capacitor } from '@capacitor/core'
@@ -10,6 +10,7 @@ import { UserService } from './services/user/user.service';
 import { User } from './shared/user.interface';
 import {TranslateService} from '@ngx-translate/core';
 import { ThemeService } from './services/theme/theme.service';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -57,13 +58,23 @@ export class AppComponent implements OnInit {
     private router: Router,
     private themeService: ThemeService,
     private platform: Platform,
+    @Inject(DOCUMENT) private doc,
     translate: TranslateService
   ) {
     this.initializeApp();
     translate.setDefaultLang('en');
 
     // the lang to use, if the lang isn't available, it will use the current loader to get them
-     translate.use('ar');
+     translate.use('en');
+     this.doc.documentElement.dir = 'ltr';
+
+    if(localStorage.getItem('userData')) {
+      let user = JSON.parse(localStorage.getItem('userData'))
+
+      this.themeService.setMode(user['dark-mode']);
+      this.themeService.setLanguage(user['lang']);
+    }
+
   }
 
   initializeApp() {

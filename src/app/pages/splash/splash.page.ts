@@ -21,10 +21,6 @@ export class SplashPage implements OnInit {
   ngOnInit() {
     this.menu.enable(false, 'custom');
 
-    this.themeService.setMode(
-      localStorage.getItem('dark-mode')
-    )
-
     setTimeout(() => {
       this.splash = false
       if(this.authService.autoLogin()) {

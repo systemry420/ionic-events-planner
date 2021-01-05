@@ -19,20 +19,14 @@ export class PreferencesPage implements OnInit {
   }
 
   changeLanguage() {
-    if(this.lang == 'ar'){
-      this.translate.use('ar');
-      this.doc.documentElement.dir = 'rtl';
-    }
-    else{
-      this.translate.use('en');
-      this.doc.documentElement.dir = 'ltr';
-    }
+   if(this.lang == 'ar') {
+     this.themeService.setLanguage('ar')
+    } else {
+      this.themeService.setLanguage('en')
+   }
   }
 
   onToggleTheme(ev) {
-    // preserve in localstorage
-    console.log(ev);
-    
     this.themeService.setMode(ev.detail.checked)
   }
 
