@@ -13,6 +13,7 @@ import { MenuController } from '@ionic/angular';
 export class MainPage implements OnInit {
   homeEvents
   currentUser
+  downloading = false
 
   constructor(
     private eventService: EventService,
@@ -23,9 +24,11 @@ export class MainPage implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.downloading = true
     this.menu.enable(true, 'custom');
     this.eventService.getEvents().subscribe(data=>{
       this.homeEvents = data
+      this.downloading = false
     })
   }
 }

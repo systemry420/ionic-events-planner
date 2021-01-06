@@ -10,11 +10,12 @@
 
 <ion-content>
   <ion-row class="ion-justify-content-center ion-padding">
-    <ion-col size='4' offset="2">
+    <ion-col size='4' offset="2" class="ion-justify-content-center ion-align-items-center">
       <ion-avatar>
         <img [src]="user.image" alt="user" />
       </ion-avatar>
-      <app-image (imagePick)="onImagePicked($event)"></app-image>
+      <ion-spinner *ngIf="uploading" color="primary" class="ion-text-center"></ion-spinner>
+      <app-image *ngIf="!uploading" (imagePick)="onImagePicked($event)"></app-image>
     </ion-col>
   </ion-row>
   <form (ngSubmit)="updateInfo()">

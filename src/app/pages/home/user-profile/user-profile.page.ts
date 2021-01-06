@@ -53,6 +53,8 @@ export class UserProfilePage implements OnInit {
     image: ''
   };
 
+  uploading = false
+
   constructor(
     public translate: TranslateService,
     private firestore: AngularFirestore,
@@ -94,6 +96,7 @@ export class UserProfilePage implements OnInit {
   task: AngularFireUploadTask;
 
   onImagePicked(image) {
+    this.uploading = true
     console.log(image);
     let dataUrl = image.dataUrl.split('base64,')
     console.log(dataUrl);
@@ -112,6 +115,7 @@ export class UserProfilePage implements OnInit {
             this.user.image = downloadURL
             console.log('image uploaded successfully', this.user);
             this.updateInfo()
+            this.uploading = false
           });
         })
       ).subscribe();

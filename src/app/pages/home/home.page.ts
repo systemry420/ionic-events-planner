@@ -5,6 +5,7 @@ import { EventService } from 'src/app/services/event/event.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/shared/user.interface';
 import { IEvent } from '../../shared/event.interface'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -32,9 +33,11 @@ export class HomePage implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private eventService: EventService,
+    private router: Router,
     private menu: MenuController
     ) {
-      // the lang to use, if the lang isn't available, it will use the current loader to get them
+      this.menu.enable(true);
+      this.getUser()
   }
 
   public selectedIndex = 0;
@@ -63,12 +66,18 @@ export class HomePage implements OnInit {
 
   getUser() {
     let userData = JSON.parse(localStorage.getItem('userData'))
+    console.log(this.authService.user)
     if(userData) {
       this.userService.getUserData(userData.id)
       .subscribe((d:any)=>{
         this.currentUserData = d
       })
     }
+  }
+
+  logout() {
+    console.log('logout');
+    this.router.navigate(['auth'])
   }
 
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs/operators'
 import { BehaviorSubject, throwError } from 'rxjs'
 import { UserToken } from '../../shared/user.token';
+import { UserService } from '../user/user.service';
 
 export interface AuthResponse {
   kind: string;
@@ -20,16 +21,16 @@ export interface AuthResponse {
 export class AuthService {
   user = new BehaviorSubject<UserToken>(null)
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
-  getUser() {
-    if(this.user !== null) {
-      return this.user
-    } else {
-      let user = JSON.parse(localStorage.getItem('userData'))
-      return user.id
-    }
-  }
+  // getUser() {
+  //   if(this.user !== null) {
+  //     return this.user
+  //   } else {
+  //     let user = JSON.parse(localStorage.getItem('userData'))
+  //     return user.id
+  //   }
+  // }
 
   signup(email: string, password: string) {
     return this.http.post<AuthResponse>(
@@ -41,11 +42,11 @@ export class AuthService {
       }
     ).
     pipe(catchError(this.handleError),
-      tap(res=>{
-        this.handleAuth(
-          res.email, res.localId, res.idToken, +res.expiresIn
-        )
-      })
+      // tap(res=>{
+      //   this.handleAuth(
+      //     res.email, res.localId, res.idToken, +res.expiresIn
+      //   )
+      // })
     )
   }
 

@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
     job: '',
     mobileNumber: '',
     age: 0,
-    gender: '0',
+    gender: '',
     email: '',
     password: '',
     events: [],

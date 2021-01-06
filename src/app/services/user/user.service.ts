@@ -11,7 +11,7 @@ export class UserService {
   users
   currentUser
 
-  constructor(private authService: AuthService, private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { }
 
   submitUserData(id, user) {
     return new Promise<any>((resolve, reject) =>{
@@ -44,6 +44,29 @@ export class UserService {
             resolve(res)
           }, err => reject(err));
     });
+  }
+
+  saveUserToStorage(user) {
+    let users
+    if(localStorage.getItem('users') === null) {
+      users = []
+      users.push(user)
+      localStorage.setItem('users', JSON.stringify(users))
+    } else {
+      users = JSON.parse(localStorage.getItem('users'))
+      users.push(user)
+      localStorage.setItem('users', JSON.stringify(users))
+    }
+  }
+
+  getUsersFromStorage() {
+    let users
+    if(localStorage.getItem('users') === null) {
+        users = []
+    } else {
+        users = JSON.parse(localStorage.getItem('users'))
+    }
+    return users
   }
 
 }
