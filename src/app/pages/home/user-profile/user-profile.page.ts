@@ -95,11 +95,11 @@ export class UserProfilePage implements OnInit {
 
   onImagePicked(image) {
     console.log(image);
-    let dataUrl = image.dataUrl.substr(22)
-    console.log(dataUrl.substr(0, 10));
+    let dataUrl = image.dataUrl.split('base64,')
+    console.log(dataUrl);
 
     // this.profileImage = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
-    let upload = base64toBlob(dataUrl, 'image/' + image.format)
+    let upload = base64toBlob(dataUrl[1], 'image/' + image.format)
 
     if(this.userData) {
       const filePath = this.userData.id;
