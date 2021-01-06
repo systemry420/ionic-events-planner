@@ -18,15 +18,15 @@ export class SignupComponent implements OnInit {
   userID
 
   user: User = {
-    firstName: 'a',
-    lastName: 'a',
-    address: 'a',
-    job: 'a',
-    mobileNumber: 'a',
-    age: 1,
-    gender: 'a',
-    email: 'a@a.com',
-    password: 'qwertyuiop',
+    firstName: '',
+    lastName: '',
+    address: '',
+    job: '',
+    mobileNumber: '',
+    age: 0,
+    gender: '0',
+    email: '',
+    password: '',
     events: [],
     image: 'https://www.lse.ac.uk/International-Inequalities/Assets/Images/BlankImage.jpg'
   };

@@ -1,7 +1,7 @@
 <form #form="ngForm">
 
   <ion-item>
-    <ion-input [value]="evTitle" placeholder="{{'Event title' | translate}}" (ionChange)="setTitle()" name="evTitle" [(ngModel)]="evTitle" required></ion-input>
+    <ion-input [value]="evTitle" placeholder="{{'Event title' | translate}}" (ionChange)="setTitle($event)" name="evTitle" [(ngModel)]="evTitle" required></ion-input>
   </ion-item>
   <ion-item>
     <tag-input

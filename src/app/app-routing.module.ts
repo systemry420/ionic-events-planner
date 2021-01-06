@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    // canActivate: [ AuthGuard ]
+    canActivate: [ AuthGuard ]
   },
   {
     path: 'auth',
@@ -20,8 +20,19 @@ const routes: Routes = [
   {
     path: 'splash',
     loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
+  },
+  {
+    path: 'notfound',
+    loadChildren: () => import('./pages/notfound/notfound.module').then( m => m.NotfoundPageModule)
+  },
+  {
+    path: '404',
+    loadChildren: () => import('./pages/notfound/notfound.module').then( m => m.NotfoundPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: '/404'
   }
-
 ];
 
 @NgModule({

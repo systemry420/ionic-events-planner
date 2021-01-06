@@ -38,7 +38,7 @@ export class HomePage implements OnInit {
   }
 
   public selectedIndex = 0;
-  public appPages = [
+  public pages = [
     {
       title: 'Main',
       url: 'home/main',
@@ -64,7 +64,6 @@ export class HomePage implements OnInit {
   getUser() {
     let userData = JSON.parse(localStorage.getItem('userData'))
     if(userData) {
-      console.log(userData);
       this.userService.getUserData(userData.id)
       .subscribe((d:any)=>{
         this.currentUserData = d

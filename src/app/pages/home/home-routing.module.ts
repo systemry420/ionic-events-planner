@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, Routes, RouterModule } from '@angular/router';
 
-import { HomePage } from './home.page';
-import { AuthGuard } from '../../pages/auth/auth.guard';
-import { MainPage } from './main/main.page';
-
 const routes: Routes = [
   {
     path: '',

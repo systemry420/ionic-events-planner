@@ -53,8 +53,6 @@ export class ThemeService {
     let user = JSON.parse(localStorage.getItem('userData'))
     user['settings'] = []
     user = {...user, 'dark-mode': this.mode, 'lang': this.language}
-    console.log(user);
-    
     localStorage.setItem('userData', JSON.stringify(user))
   }
 }
