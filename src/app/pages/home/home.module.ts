@@ -13,6 +13,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { HomePage } from './home.page';
 import { MainPage } from './main/main.page';
 import { ImageComponent } from './user-profile/image/image.component';
+import {TabsPage} from './tabs/tabs.page'
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { ImageComponent } from './user-profile/image/image.component';
     UserProfilePage,
     MainPage,
     PreferencesPage,
+    TabsPage,
     ImageComponent
   ],
   providers: [

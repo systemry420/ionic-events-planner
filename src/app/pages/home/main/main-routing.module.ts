@@ -6,8 +6,18 @@ import { MainPage } from './main.page';
 const routes: Routes = [
   {
     path: '',
-    component: MainPage
-  }
+    component: MainPage,
+    children: [
+      {
+        path: 'tab1',
+        redirectTo: '/home/main'
+      },
+      {
+        path: 'tab2',
+        redirectTo: '/home/people'
+      },
+    ]
+  },
 ];
 
 @NgModule({

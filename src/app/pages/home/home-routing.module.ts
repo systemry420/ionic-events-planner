@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'main',
-    // pathMatch: "full",
+    pathMatch: "full",
     // canActivate: [ AuthGuard ],
   },
   {
     path: 'main',
-    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule)
+    loadChildren: () => import('./main/main.module').then( m => m.MainPageModule),
   },
   {
     path: 'user-profile',
@@ -23,7 +23,13 @@ const routes: Routes = [
   {
     path: 'schedule',
     loadChildren: () => import('./schedule/schedule.module').then( m => m.SchedulePageModule),
+  },  {
+    path: 'people',
+    loadChildren: () => import('./people/people.module').then( m => m.PeoplePageModule)
   },
+
+
+
 
 
 ];

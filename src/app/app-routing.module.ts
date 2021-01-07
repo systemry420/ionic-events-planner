@@ -5,7 +5,7 @@ import { AuthGuard } from './pages/auth/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'splash',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -29,10 +29,10 @@ const routes: Routes = [
     path: '404',
     loadChildren: () => import('./pages/notfound/notfound.module').then( m => m.NotfoundPageModule)
   },
-  {
-    path: '**',
-    redirectTo: '/404'
-  }
+  // {
+  //   // path: '**',
+  //   // redirectTo: '/404'
+  // }
 ];
 
 @NgModule({

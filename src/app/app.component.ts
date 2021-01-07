@@ -89,7 +89,7 @@ export class AppComponent implements OnInit {
   
   ngOnInit() {
     this.getUser()
-    this.router.navigate(['splash'])
+    // this.router.navigate(['splash'])
     setTimeout(() => {
       if(this.autologin) {
         this.router.navigate(['home'])
