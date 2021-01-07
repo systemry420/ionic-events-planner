@@ -23,11 +23,11 @@ export class SplashPage implements OnInit {
 
     setTimeout(() => {
       this.splash = false
-      if(this.authService.autoLogin()) {
-        this.router.navigate(['home'])
-      } else {
-        this.router.navigate(['auth'])
-      }
+      // if(this.authService.autoLogin()) {
+      //   this.router.navigate(['home'])
+      // } else {
+      //   this.router.navigate(['auth'])
+      // }
     }, 4000);
   }
 

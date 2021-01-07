@@ -19,7 +19,7 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  user = new BehaviorSubject<UserToken>(null)
+  userSubject = new BehaviorSubject<UserToken>(null)
 
   constructor(private http: HttpClient, private userService: UserService) { }
 
@@ -72,16 +72,16 @@ export class AuthService {
     console.log(userData);
     
     if(!userData){
-      return;
+      return false;
     }
 
     const loadedUser = new UserToken(userData.email, userData.id, userData._token, userData._tokenExpirationDate)
+    console.log(loadedUser);
 
     if(loadedUser.token) {
-      this.user.next(loadedUser)
+      this.userSubject.next(loadedUser)
       return true
     }
-    console.log(loadedUser);
 
   }
 
@@ -90,7 +90,7 @@ export class AuthService {
     const userToken = new UserToken(
       email, userId, token, expDate
     )
-    this.user.next(userToken)
+    this.userSubject.next(userToken)
     localStorage.setItem('userData', JSON.stringify(userToken))
   }
 

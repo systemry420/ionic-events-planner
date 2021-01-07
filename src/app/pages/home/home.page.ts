@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { EventService } from 'src/app/services/event/event.service';
@@ -15,19 +15,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
   // @ViewChild('menu') menu;
   homeEvents
-  currentUserData: User = {
-      firstName: '',
-      lastName: '',
-      address: '',
-      job: '',
-      mobileNumber: '',
-      age: 0,
-      gender: '',
-      email: '',
-      events: [],
-      password: '',
-      image: ''
-  }
+  @Input() currentUserData: User
 
   constructor(
     private authService: AuthService,
@@ -37,7 +25,15 @@ export class HomePage implements OnInit {
     private menu: MenuController
     ) {
       this.menu.enable(true);
-      this.getUser()
+      let userData = JSON.parse(localStorage.getItem('userData'))
+      // console.log(userData);
+      
+      if(userData) {
+        this.userService.getUserData(userData.id)
+        .subscribe((d:any)=>{
+          this.currentUserData = d
+        })
+      }
   }
 
   public selectedIndex = 0;
@@ -60,23 +56,11 @@ export class HomePage implements OnInit {
   ];
 
   ngOnInit() {
-    this.menu.enable(true);
-    this.getUser()
-  }
 
-  getUser() {
-    let userData = JSON.parse(localStorage.getItem('userData'))
-    console.log(this.authService.user)
-    if(userData) {
-      this.userService.getUserData(userData.id)
-      .subscribe((d:any)=>{
-        this.currentUserData = d
-      })
-    }
   }
 
   logout() {
-    console.log('logout');
+    localStorage.removeItem('userData')
     this.router.navigate(['auth'])
   }
 

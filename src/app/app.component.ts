@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
     events: [],
     image: ''
   };
+  autologin = false
 
   public selectedIndex = 0;
   public appPages = [
@@ -55,6 +56,7 @@ export class AppComponent implements OnInit {
   constructor(
     private statusBar: StatusBar,
     private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     private themeService: ThemeService,
     private platform: Platform,
@@ -84,8 +86,29 @@ export class AppComponent implements OnInit {
       }
     });
   }
-
+  
   ngOnInit() {
+    this.getUser()
+    this.router.navigate(['splash'])
+    setTimeout(() => {
+      if(this.autologin) {
+        this.router.navigate(['home'])
+      } else {
+        this.router.navigate(['auth'])
+      }
+    }, 4000)
   }
+
+  getUser() {
+    let userData = JSON.parse(localStorage.getItem('userData'))
+    let auto = this.authService.autoLogin()
+    if(auto) {
+        this.userService.getUserData(userData.id)
+        .subscribe((d:any)=>{
+          this.currentUser = d
+          this.autologin = true
+        })
+      }
+    }
 
 }
