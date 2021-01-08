@@ -17,6 +17,7 @@ import { TabsPage } from './tabs/tabs.page'
 import { PeoplePage } from './people/people.page'
 import { SchedulePageModule } from './schedule/schedule.module';
 import { SchedulePage } from './schedule/schedule.page';
+import { MatStepperModule, MatVerticalStepper, MatStep } from '@angular/material/stepper';
 
 @NgModule({
   imports: [
@@ -24,16 +25,22 @@ import { SchedulePage } from './schedule/schedule.page';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+    // MatStepperModule,
+    // MatVerticalStepper,
+    // MatStep,
     TranslateModule.forChild()
   ],
   declarations: [
     UserProfilePage,
     MainPage,
-    SchedulePage,
+    SchedulePageModule,
     PreferencesPage,
     TabsPage,
     PeoplePage,
     ImageComponent
+  ],
+  exports: [
+    TabsPage
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

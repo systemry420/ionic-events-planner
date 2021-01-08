@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, Routes, RouterModule } from '@angular/router';
+import { SchedulePageModule } from './schedule/schedule.module';
 
 const routes: Routes = [
   {
@@ -21,11 +22,12 @@ const routes: Routes = [
     loadChildren: () => import('./preferences/preferences.module').then( m => m.PreferencesPageModule),
   },
   {
-    path: 'schedule',
-    loadChildren: () => import('./schedule/schedule.module').then( m => m.SchedulePageModule),
-  },  {
     path: 'people',
     loadChildren: () => import('./people/people.module').then( m => m.PeoplePageModule)
+  },
+  {
+    path: 'schedule',
+    loadChildren: () => import('./schedule/schedule.module').then( m => m.SchedulePageModule)
   },
 
 

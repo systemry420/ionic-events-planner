@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { EventService } from 'src/app/services/event/event.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from 'src/app/services/user/user.service';
@@ -19,7 +20,7 @@ export class MainPage implements OnInit {
     private eventService: EventService,
     public translate: TranslateService,
     private authService: AuthService,
-    private userService: UserService,
+    private router: Router,
     private menu: MenuController
     ) { }
 
@@ -30,5 +31,9 @@ export class MainPage implements OnInit {
       this.homeEvents = data
       this.downloading = false
     })
+  }
+
+  gotoSchedule() {
+    this.router.navigate(['home/schedule'])
   }
 }
