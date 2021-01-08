@@ -16,6 +16,7 @@ import { MapComponent } from './map/map.component';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { TranslateModule } from '@ngx-translate/core';
 import { TagInputModule } from 'ngx-chips';
+import { TabsPage } from '../tabs/tabs.page'
 
 @NgModule({
   imports: [
@@ -30,7 +31,12 @@ import { TagInputModule } from 'ngx-chips';
     SchedulePageRoutingModule,
     TagInputModule
   ],
-  declarations: [SchedulePage, FormComponent, MapComponent],
+  declarations: [
+    SchedulePage,
+    MatStepperModule,
+    FormComponent,
+    TabsPage,
+    MapComponent],
   providers: [Geolocation]
 })
 export class SchedulePageModule {}

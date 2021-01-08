@@ -6,6 +6,11 @@
 ion-toolbar {
     --background: transparent;
     color: #fff;
+
+    ion-buttons {
+        min-height: 0;
+    }
+
 }
 
 svg {

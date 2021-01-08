@@ -39,11 +39,6 @@ export class HomePage implements OnInit {
   public selectedIndex = 0;
   public pages = [
     {
-      title: 'Main',
-      url: 'home/main',
-      icon: 'home'
-    },
-    {
       title: 'Schedule',
       url: 'home/schedule',
       icon: 'calendar'

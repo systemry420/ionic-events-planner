@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PeoplePage } from '../people/people.page';
 
 import { MainPage } from './main.page';
 
@@ -9,12 +10,12 @@ const routes: Routes = [
     component: MainPage,
     children: [
       {
-        path: 'tab1',
-        redirectTo: '/home/main'
+        path: 'main',
+        component: MainPage
       },
       {
-        path: 'tab2',
-        redirectTo: '/home/people'
+        path: 'people',
+        component: PeoplePage
       },
     ]
   },

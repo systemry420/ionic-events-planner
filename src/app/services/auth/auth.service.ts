@@ -69,14 +69,14 @@ export class AuthService {
 
   autoLogin() {
     const userData = JSON.parse(localStorage.getItem('userData'))
-    console.log(userData);
+    // console.log(userData);
     
     if(!userData){
       return false;
     }
 
     const loadedUser = new UserToken(userData.email, userData.id, userData._token, userData._tokenExpirationDate)
-    console.log(loadedUser);
+    // console.log(loadedUser);
 
     if(loadedUser.token) {
       this.userSubject.next(loadedUser)

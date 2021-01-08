@@ -1,0 +1,14 @@
+ion-tab-bar {
+    border-bottom: 0;
+    margin-left: 3.5em;
+    ion-tab-button {
+        color: rgba(var(--ion-color-contrast-rgb));
+        margin-bottom: 0;
+        width: 5em;
+    }
+}
+
+.active {
+    border-bottom: 4px solid #fff;
+    background-color: #5f99ffcc;
+}
