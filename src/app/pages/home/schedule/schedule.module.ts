@@ -32,10 +32,9 @@ import { TabsPage } from '../tabs/tabs.page'
     TagInputModule
   ],
   declarations: [
-    SchedulePage,
-    MatStepperModule,
+    // MatStepperModule,
     FormComponent,
-    TabsPage,
+    // TabsPage,
     MapComponent],
   providers: [Geolocation]
 })

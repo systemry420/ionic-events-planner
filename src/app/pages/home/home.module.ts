@@ -16,6 +16,7 @@ import { ImageComponent } from './user-profile/image/image.component';
 import { TabsPage } from './tabs/tabs.page'
 import { PeoplePage } from './people/people.page'
 import { SchedulePageModule } from './schedule/schedule.module';
+import { SchedulePage } from './schedule/schedule.page';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { SchedulePageModule } from './schedule/schedule.module';
   declarations: [
     UserProfilePage,
     MainPage,
-    SchedulePageModule,
+    SchedulePage,
     PreferencesPage,
     TabsPage,
     PeoplePage,

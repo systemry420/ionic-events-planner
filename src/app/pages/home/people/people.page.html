@@ -18,11 +18,26 @@
                 <h1>{{ "People" | translate}}</h1>
               </ion-row>
               <ion-row>
-                <ion-spinner color="primary"></ion-spinner>
+                <!-- <ion-spinner color="primary"></ion-spinner> -->
               </ion-row>
             </ion-grid>
           </ion-list-header>
-          
+          <ion-item *ngFor="let user of users">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="4">
+                  <ion-avatar>
+                    <img [src]="user.image"/>
+                  </ion-avatar>
+                </ion-col>
+                <ion-col size="8">
+                  <ion-text class="ion-align-self-center">
+                    {{ user.firstName }} {{ user.lastName}}
+                  </ion-text>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>

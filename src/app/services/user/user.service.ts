@@ -25,9 +25,9 @@ export class UserService {
     });
   }
 
-  // getUsers() {
-  //   return this.firestore.collection('users').valueChanges()
-  // }
+  getUsers() {
+    return this.firestore.collection('users').valueChanges()
+  }
 
   // used by: home, user-profile
   getUserData(id) {
