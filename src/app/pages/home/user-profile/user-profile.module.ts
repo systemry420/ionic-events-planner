@@ -8,14 +8,23 @@ import { UserProfilePageRoutingModule } from './user-profile-routing.module';
 
 import { UserProfilePage } from './user-profile.page';
 import { ImageComponent } from './image/image.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    UserProfilePageRoutingModule
+    TranslateModule,
+    UserProfilePageRoutingModule,
+    TranslateModule,
   ],
-  declarations: []
+  declarations: [
+    UserProfilePage,
+    ImageComponent
+  ],
+  exports: [
+    ImageComponent
+  ]
 })
 export class UserProfilePageModule {}

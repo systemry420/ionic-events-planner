@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-people',
@@ -8,7 +9,9 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class PeoplePage implements OnInit {
   users
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    public translate: TranslateService) { }
 
   ngOnInit() {
     this.userService.getUsers()

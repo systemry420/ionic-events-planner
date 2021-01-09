@@ -14,9 +14,13 @@ import { HomePageRoutingModule } from '../home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    // TabsPage
     // TabsPageRoutingModule
   ],
-  declarations: [TabsPage]
+  declarations: [TabsPage],
+  exports: [
+    TabsPage
+  ]
 })
 export class TabsPageModule {}

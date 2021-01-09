@@ -15,9 +15,13 @@ import { MainPage } from './main/main.page';
 import { ImageComponent } from './user-profile/image/image.component';
 import { TabsPage } from './tabs/tabs.page'
 import { PeoplePage } from './people/people.page'
-import { SchedulePageModule } from './schedule/schedule.module';
-import { SchedulePage } from './schedule/schedule.page';
-import { MatStepperModule, MatVerticalStepper, MatStep } from '@angular/material/stepper';
+import { AddEventPage } from './add-event/add-event.page';
+import { AddEventPageModule } from './add-event/add-event.module';
+import { TabsPageModule} from './tabs/tabs.module'
+import { PreferencesPageModule } from './preferences/preferences.module';
+import { MainPageModule } from './main/main.module';
+import { PeoplePageModule } from './people/people.module';
+import { UserProfilePageModule } from './user-profile/user-profile.module';
 
 @NgModule({
   imports: [
@@ -25,22 +29,22 @@ import { MatStepperModule, MatVerticalStepper, MatStep } from '@angular/material
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    // MatStepperModule,
-    // MatVerticalStepper,
-    // MatStep,
-    TranslateModule.forChild()
+    // TranslateModule.forChild(),
+    TabsPageModule,
+    AddEventPageModule,
+    MainPageModule,
+    PreferencesPageModule,
+    PeoplePageModule,
+    UserProfilePageModule
   ],
   declarations: [
-    UserProfilePage,
-    MainPage,
-    SchedulePageModule,
-    PreferencesPage,
-    TabsPage,
-    PeoplePage,
-    ImageComponent
-  ],
-  exports: [
-    TabsPage
+    // UserProfilePage,
+    // MainPage,
+    // PreferencesPage,
+    // TabsPage,
+    // PeoplePage,
+    // AddEventPage,
+    // ImageComponent
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

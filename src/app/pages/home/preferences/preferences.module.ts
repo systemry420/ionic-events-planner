@@ -8,14 +8,20 @@ import { PreferencesPageRoutingModule } from './preferences-routing.module';
 
 import { PreferencesPage } from './preferences.page';
 import { TabsPage } from '../tabs/tabs.page'
+import { TabsPageModule } from '../tabs/tabs.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PreferencesPageRoutingModule
+    PreferencesPageRoutingModule,
+    TabsPageModule,
+    TranslateModule,
   ],
-  declarations: []
+  declarations: [
+    PreferencesPage
+  ]
 })
 export class PreferencesPageModule {}

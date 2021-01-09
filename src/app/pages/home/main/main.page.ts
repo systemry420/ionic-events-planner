@@ -34,6 +34,6 @@ export class MainPage implements OnInit {
   }
 
   gotoSchedule() {
-    this.router.navigate(['home/schedule'])
+    this.router.navigate(['home/add-event'])
   }
 }

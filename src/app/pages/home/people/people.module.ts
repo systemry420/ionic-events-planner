@@ -7,14 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { PeoplePageRoutingModule } from './people-routing.module';
 
 import { PeoplePage } from './people.page';
+import { TabsPageModule } from '../tabs/tabs.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PeoplePageRoutingModule
+    PeoplePageRoutingModule,
+    TabsPageModule,
+    TranslateModule,
   ],
-  declarations: []
+  declarations: [
+    PeoplePage
+  ]
 })
 export class PeoplePageModule {}
