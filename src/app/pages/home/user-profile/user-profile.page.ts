@@ -40,6 +40,7 @@ function base64toBlob(base64Data, contentType) {
 export class UserProfilePage implements OnInit {
 
   user: User = {
+    id: '',
     firstName: '',
     lastName: '',
     address: '',

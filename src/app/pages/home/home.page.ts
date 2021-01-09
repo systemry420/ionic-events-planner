@@ -8,14 +8,27 @@ import { IEvent } from '../../shared/event.interface'
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: "app-home",
+  templateUrl: "./home.page.html",
+  styleUrls: ["./home.page.scss"],
 })
 export class HomePage implements OnInit {
   // @ViewChild('menu') menu;
-  homeEvents
-  @Input() currentUserData: User
+  homeEvents;
+  currentUserData: User = {
+    id: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    job: '',
+    mobileNumber: '',
+    age: 0,
+    gender: '',
+    email: '',
+    events: [],
+    password: '',
+    image: ''
+  }
 
   constructor(
     private authService: AuthService,
@@ -23,17 +36,8 @@ export class HomePage implements OnInit {
     private eventService: EventService,
     private router: Router,
     private menu: MenuController
-    ) {
-      this.menu.enable(true);
-      let userData = JSON.parse(localStorage.getItem('userData'))
-      // console.log(userData);
-      
-      if(userData) {
-        this.userService.getUserData(userData.id)
-        .subscribe((d:any)=>{
-          this.currentUserData = d
-        })
-      }
+  ) {
+    this.menu.enable(true);
   }
 
   public selectedIndex = 0;
@@ -44,19 +48,24 @@ export class HomePage implements OnInit {
     //   icon: 'calendar'
     // },
     {
-      title: 'Preferences',
-      url: 'home/preferences',
-      icon: 'settings'
-    }
+      title: "Preferences",
+      url: "home/preferences",
+      icon: "settings",
+    },
   ];
 
   ngOnInit() {
-
+      this.authService.userSubject.subscribe(user => {
+        this.userService.getUserData(user.id).subscribe((d: any) => {
+          this.currentUserData = d;
+          console.log(this.currentUserData);
+          this.router.navigateByUrl('home/main');
+        });
+      })
   }
 
   logout() {
-    localStorage.removeItem('userData')
-    this.router.navigate(['auth'])
+    localStorage.removeItem("userData");
+    this.router.navigate(["auth"]);
   }
-
 }

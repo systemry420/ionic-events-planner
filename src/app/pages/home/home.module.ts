@@ -38,13 +38,6 @@ import { UserProfilePageModule } from './user-profile/user-profile.module';
     UserProfilePageModule
   ],
   declarations: [
-    // UserProfilePage,
-    // MainPage,
-    // PreferencesPage,
-    // TabsPage,
-    // PeoplePage,
-    // AddEventPage,
-    // ImageComponent
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

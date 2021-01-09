@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
   userID
 
   user: User = {
+    id: '',
     firstName: '',
     lastName: '',
     address: '',
@@ -39,6 +40,8 @@ export class SignupComponent implements OnInit {
   ngOnInit() {}
 
   onSignup() {
+    // this.user = {id: this.userID, ...this.user}
+    this.user['id'] = this.userID
     this.userService.submitUserData(this.userID, this.user)
     .then(res=>{
       this.toast.presentToast("Your account is created successfully!")

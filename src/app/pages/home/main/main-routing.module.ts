@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PeoplePage } from '../people/people.page';
-import { SchedulePageModule } from '../schedule/schedule.module';
-import { SchedulePage } from '../schedule/schedule.page';
 
 import { MainPage } from './main.page';
 

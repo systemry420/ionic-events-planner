@@ -9,6 +9,7 @@ import { PeoplePageRoutingModule } from './people-routing.module';
 import { PeoplePage } from './people.page';
 import { TabsPageModule } from '../tabs/tabs.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { PersonPageModule } from './person/person.module';
 
 @NgModule({
   imports: [
@@ -18,9 +19,10 @@ import { TranslateModule } from '@ngx-translate/core';
     PeoplePageRoutingModule,
     TabsPageModule,
     TranslateModule,
+    PersonPageModule
   ],
   declarations: [
-    PeoplePage
+    PeoplePage,
   ]
 })
 export class PeoplePageModule {}

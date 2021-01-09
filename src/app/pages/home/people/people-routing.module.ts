@@ -6,8 +6,14 @@ import { PeoplePage } from './people.page';
 const routes: Routes = [
   {
     path: '',
-    component: PeoplePage
-  }
+    component: PeoplePage,
+    children: [
+    ]
+  },
+  {
+    path: "people/:personId",
+    loadChildren: () => import('./person/person.module').then( m => m.PersonPageModule)
+  },
 ];
 
 @NgModule({
