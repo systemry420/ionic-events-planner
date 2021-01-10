@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
       this.userService.getUserData(user.id).subscribe((d: any) => {
         this.currentUserData = d;
         console.log(this.currentUserData);
-        this.router.navigateByUrl('home/main');
+        this.router.navigateByUrl('home/people');
       });
     } else {
       this.authService.userSubject.subscribe(user => {
@@ -70,7 +70,7 @@ export class HomePage implements OnInit {
             this.currentUserData = d;
             console.log(this.currentUserData);
             setTimeout(() => {
-              this.router.navigateByUrl('home/main');
+              this.router.navigateByUrl('home/people');
             }, 1000);
           })
         }

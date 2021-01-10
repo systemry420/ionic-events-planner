@@ -1,10 +1,44 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar color="primary">
       <ion-back-button  slot="start" [routerLink]="['../people']"></ion-back-button>
     <ion-title>{{loadedPerson.firstName}}</ion-title>
   </ion-toolbar>
+  <div class="bg">
+      <img [src]="loadedPerson.image" alt="person" />
+  </div>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid class="ion-margin">
+    <ion-row  class="ion-margin">
+      <ion-col class="ion-margin">
+        <ion-list>
+          <ion-item>
+            <ion-icon name="person"></ion-icon>
+            <ion-text>{{loadedPerson.firstName}} {{loadedPerson.lastName}}</ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="location"></ion-icon>
+            <ion-label>{{loadedPerson.address}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="code-working-outline"></ion-icon>
+            <ion-label>{{loadedPerson.job}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="phone-portrait-outline"></ion-icon>
+            <ion-label>{{loadedPerson.mobileNumber}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="egg-outline"></ion-icon>
+            <ion-label>{{loadedPerson.age}} years old.</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="male-female-outline"></ion-icon>
+            <ion-label>{{loadedPerson.gender}}</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
