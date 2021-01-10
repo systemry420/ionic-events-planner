@@ -21,14 +21,14 @@ export class SplashPage implements OnInit {
   ngOnInit() {
     this.menu.enable(false, 'custom');
 
-    setTimeout(() => {
-      this.splash = false
-      // if(this.authService.autoLogin()) {
-      //   this.router.navigate(['home'])
-      // } else {
-      //   this.router.navigate(['auth'])
-      // }
-    }, 4000);
+    // setTimeout(() => {
+    //   this.splash = false
+    //   // if(this.authService.autoLogin()) {
+    //   //   this.router.navigate(['home'])
+    //   // } else {
+    //   //   this.router.navigate(['auth'])
+    //   // }
+    // }, 4000);
   }
 
 }

@@ -4,22 +4,21 @@
     background-color: var(--ion-color-primary);
     justify-content: center;
     display: flex;
+    margin-bottom: 1em;
     // align-items: center;
     img {
         border: 4px solid #fff;
         margin: 2.4em 0;
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
         border-radius: 50%;
     }
 }
 
-
-ion-list {
-    ion-item {
-        display: flex;
-        justify-content: space-around;
-    }
+ion-text {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 ion-icon {

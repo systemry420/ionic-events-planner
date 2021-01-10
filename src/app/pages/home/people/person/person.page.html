@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-      <ion-back-button  slot="start" [routerLink]="['../people']"></ion-back-button>
+      <ion-back-button  slot="start" [routerLink]="['../']"></ion-back-button>
     <ion-title>{{loadedPerson.firstName}}</ion-title>
   </ion-toolbar>
   <div class="bg">
@@ -11,31 +11,31 @@
 <ion-content>
   <ion-grid class="ion-margin">
     <ion-row  class="ion-margin">
-      <ion-col class="ion-margin">
+      <ion-col size-sm="8" offset-sm="2">
         <ion-list>
           <ion-item>
             <ion-icon name="person"></ion-icon>
-            <ion-text>{{loadedPerson.firstName}} {{loadedPerson.lastName}}</ion-text>
+            <ion-text><strong>Full name:</strong> {{loadedPerson.firstName}} {{loadedPerson.lastName}}</ion-text>
           </ion-item>
           <ion-item>
             <ion-icon name="location"></ion-icon>
-            <ion-label>{{loadedPerson.address}}</ion-label>
+            <ion-text><strong>Address:</strong> {{loadedPerson.address}}</ion-text>
           </ion-item>
           <ion-item>
             <ion-icon name="code-working-outline"></ion-icon>
-            <ion-label>{{loadedPerson.job}}</ion-label>
+            <ion-text><strong>Job:</strong> {{loadedPerson.job}}</ion-text>
           </ion-item>
           <ion-item>
             <ion-icon name="phone-portrait-outline"></ion-icon>
-            <ion-label>{{loadedPerson.mobileNumber}}</ion-label>
+            <ion-text><strong>Mobile:</strong> {{loadedPerson.mobileNumber}}</ion-text>
           </ion-item>
           <ion-item>
             <ion-icon name="egg-outline"></ion-icon>
-            <ion-label>{{loadedPerson.age}} years old.</ion-label>
+            <ion-text><strong>Age:</strong> {{loadedPerson.age}} years old.</ion-text>
           </ion-item>
           <ion-item>
             <ion-icon name="male-female-outline"></ion-icon>
-            <ion-label>{{loadedPerson.gender}}</ion-label>
+            <ion-text><strong>Gender:</strong> {{loadedPerson.gender}}</ion-text>
           </ion-item>
         </ion-list>
       </ion-col>
