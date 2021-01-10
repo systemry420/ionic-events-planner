@@ -55,17 +55,32 @@ export class HomePage implements OnInit {
   ];
 
   ngOnInit() {
+    let user = JSON.parse(localStorage.getItem('userData'))
+    if(user) {
+      this.userService.getUserData(user.id).subscribe((d: any) => {
+        this.currentUserData = d;
+        console.log(this.currentUserData);
+        this.router.navigateByUrl('home/main');
+      });
+    } else {
       this.authService.userSubject.subscribe(user => {
-        this.userService.getUserData(user.id).subscribe((d: any) => {
-          this.currentUserData = d;
-          console.log(this.currentUserData);
-          this.router.navigateByUrl('home/main');
-        });
+        if(user != null) {
+          this.userService.getUserData(user.id)
+          .subscribe((d:any)=>{
+            this.currentUserData = d;
+            console.log(this.currentUserData);
+            setTimeout(() => {
+              this.router.navigateByUrl('home/main');
+            }, 1000);
+          })
+        }
       })
+    }
   }
 
   logout() {
     localStorage.removeItem("userData");
     this.router.navigate(["auth"]);
+    this.authService.logout()
   }
 }

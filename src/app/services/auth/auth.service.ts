@@ -85,6 +85,10 @@ export class AuthService {
 
   }
 
+  logout() {
+    this.userSubject.next(null)
+  }
+
   private handleAuth(email, userId, token, expiresIn) {
     const expDate = new Date(new Date().getTime() + expiresIn * 1000)
     const userToken = new UserToken(

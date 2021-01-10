@@ -19,6 +19,7 @@ import {DOCUMENT} from '@angular/common';
 })
 export class AppComponent implements OnInit {
   currentUser: User = {
+    id: '',
     firstName: '',
     lastName: '',
     address: '',
@@ -89,7 +90,7 @@ export class AppComponent implements OnInit {
   
   ngOnInit() {
     this.getUser()
-    // this.router.navigate(['splash'])
+    this.router.navigate(['splash'])
     setTimeout(() => {
       if(this.autologin) {
         this.router.navigate(['home'])

@@ -1,4 +1,4 @@
 <ion-app>
     <app-auth *ngIf="!currentUser"></app-auth>
-    <app-home [currentUserData]="currentUser" *ngIf="currentUser"></app-home>
+    <app-home *ngIf="currentUser"></app-home>
 </ion-app>
