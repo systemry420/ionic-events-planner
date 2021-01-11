@@ -11,7 +11,9 @@ export class UserService {
   users
   currentUser
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore,
+    private authService: AuthService
+  ) { }
 
   submitUserData(id, user) {
     return new Promise<any>((resolve, reject) =>{

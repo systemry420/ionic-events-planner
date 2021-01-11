@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, Routes, RouterModule } from '@angular/router';
+import { HomePage } from './home.page';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'main',
+    path: 'home',
+    // redirectTo: 'main',
+    component: HomePage,
     pathMatch: "full",
     // canActivate: [ AuthGuard ],
   },
@@ -28,6 +30,11 @@ const routes: Routes = [
     path: 'add-event',
     loadChildren: () => import('./add-event/add-event.module').then( m => m.AddEventPageModule)
   },
+  {
+    path: 'my-events',
+    loadChildren: () => import('./my-events/my-events.module').then( m => m.MyEventsPageModule)
+  },
+
 ];
 
 @NgModule({

@@ -42,11 +42,11 @@ export class HomePage implements OnInit {
 
   public selectedIndex = 0;
   public pages = [
-    // {
-    //   title: 'Schedule',
-    //   url: 'home/schedule',
-    //   icon: 'calendar'
-    // },
+    {
+      title: 'My Events',
+      url: 'home/my-events',
+      icon: 'person'
+    },
     {
       title: "Preferences",
       url: "home/preferences",
@@ -80,7 +80,7 @@ export class HomePage implements OnInit {
 
   logout() {
     localStorage.removeItem("userData");
-    this.router.navigate(["/"]);
+    this.router.navigate(["auth"]);
     this.authService.logout()
   }
 }

@@ -21,7 +21,7 @@ export interface AuthResponse {
 export class AuthService {
   userSubject = new BehaviorSubject<UserToken>(null)
 
-  constructor(private http: HttpClient, private userService: UserService) { }
+  constructor(private http: HttpClient) { }
 
   // getUser() {
   //   if(this.user !== null) {

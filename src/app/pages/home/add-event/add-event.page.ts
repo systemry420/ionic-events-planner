@@ -6,6 +6,7 @@ import { CalendarComponentOptions } from 'ion2-calendar';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { EventService } from 'src/app/services/event/event.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-add-event',
@@ -48,6 +49,7 @@ export class AddEventPage implements OnInit {
     private toast: ToastService,
     public translate: TranslateService,
     private eventService: EventService,
+    private userService: UserService,
     public toastController: ToastController) {
   }
 
@@ -220,6 +222,4 @@ lang = this.translate.getLangs()
 
     this.router.navigate(['home'])
   }
-
-
 }

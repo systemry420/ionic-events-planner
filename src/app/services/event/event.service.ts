@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IEvent } from '../../shared/event.interface'
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../auth/auth.service';
 
 
 @Injectable({
@@ -11,13 +12,22 @@ export class EventService {
 
   eventObs: Observable<any[]>
   events
+  userId
 
-  constructor( private firestore: AngularFirestore) {
-
+  constructor(private authService: AuthService,
+    private firestore: AngularFirestore
+  ) {
+    this.authService.userSubject.subscribe(user => {
+      this.userId = user.id
+    })
   }
 
   getEvents() {
     return this.firestore.collection('events').valueChanges()
+  }
+
+  getMyEvents() {
+    return this.firestore.collection('events', ref=> ref.where('userId', '==', this.userId)).valueChanges()
   }
 
   addEvent(title, type, style, occur, dates, location, tags) {
@@ -28,11 +38,10 @@ export class EventService {
       occur,
       dates,
       location,
-      tags
+      tags,
+      userId: this.userId
     }
 
-    console.log(newEvent);
-    
 
     return new Promise<any>((resolve, reject) =>{
       this.firestore
