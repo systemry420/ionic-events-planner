@@ -17,16 +17,16 @@ export class EventService {
   constructor(private authService: AuthService,
     private firestore: AngularFirestore
   ) {
-    this.authService.userSubject.subscribe(user => {
-      this.userId = user.id
-    })
   }
-
+  
   getEvents() {
     return this.firestore.collection('events').valueChanges()
   }
-
+  
   getMyEvents() {
+    this.authService.userSubject.subscribe(user => {
+      this.userId = user.id
+    })
     return this.firestore.collection('events', ref=> ref.where('userId', '==', this.userId)).valueChanges()
   }
 

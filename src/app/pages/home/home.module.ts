@@ -22,7 +22,6 @@ import { PreferencesPageModule } from './preferences/preferences.module';
 import { MainPageModule } from './main/main.module';
 import { PeoplePageModule } from './people/people.module';
 import { UserProfilePageModule } from './user-profile/user-profile.module';
-import { MyEventsPageModule } from './my-events/my-events.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -37,7 +36,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     MainPageModule,
     PreferencesPageModule,
     PeoplePageModule,
-    MyEventsPageModule,
     UserProfilePageModule,
     SharedModule
   ],

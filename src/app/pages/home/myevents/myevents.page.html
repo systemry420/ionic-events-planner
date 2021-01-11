@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <app-tabs></app-tabs>
+    <!-- <app-tabs></app-tabs> -->
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,11 @@
           <ion-list-header  class="ion-align-items-center ion-justify-content-center">
             <ion-grid>
               <ion-row>
-                <h1>{{ "My Own Events"}}</h1>
+                <h1 *ngIf="myEvents.length>0">{{ "My Own Events"}}</h1>
+                <div *ngIf="myEvents.length == 0">
+                  <h1>{{ "You didn't add any events yet"}}</h1>
+                  <ion-button fill="outline" expand="block" routerLink="../../home/add-event">Add now!</ion-button>
+                </div>
               </ion-row>
               <ion-row>
                 <!-- <ion-spinner color="primary" *ngIf="downloading"></ion-spinner> -->

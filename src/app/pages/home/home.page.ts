@@ -44,7 +44,7 @@ export class HomePage implements OnInit {
   public pages = [
     {
       title: 'My Events',
-      url: 'home/my-events',
+      url: 'home/myevents',
       icon: 'person'
     },
     {
@@ -81,6 +81,6 @@ export class HomePage implements OnInit {
   logout() {
     localStorage.removeItem("userData");
     this.router.navigate(["auth"]);
-    this.authService.logout()
+    // this.authService.logout()
   }
 }

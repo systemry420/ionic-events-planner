@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MyEventsPageRoutingModule } from './my-events-routing.module';
+import { MyeventsPageRoutingModule } from './myevents-routing.module';
 
-import { MyEventsPage } from './my-events.page';
-import { TabsPageModule } from '../tabs/tabs.module';
+import { MyeventsPage } from './myevents.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -15,10 +14,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsPageModule,
     SharedModule,
-    MyEventsPageRoutingModule
+    MyeventsPageRoutingModule
   ],
-  declarations: [MyEventsPage]
+  declarations: [MyeventsPage]
 })
-export class MyEventsPageModule {}
+export class MyeventsPageModule {}

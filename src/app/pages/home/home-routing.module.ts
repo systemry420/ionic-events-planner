@@ -4,9 +4,9 @@ import { HomePage } from './home.page';
 
 const routes: Routes = [
   {
-    path: 'home',
-    // redirectTo: 'main',
-    component: HomePage,
+    path: '',
+    redirectTo: 'main',
+    // component: HomePage,
     pathMatch: "full",
     // canActivate: [ AuthGuard ],
   },
@@ -31,9 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./add-event/add-event.module').then( m => m.AddEventPageModule)
   },
   {
-    path: 'my-events',
-    loadChildren: () => import('./my-events/my-events.module').then( m => m.MyEventsPageModule)
+    path: 'myevents',
+    loadChildren: () => import('./myevents/myevents.module').then( m => m.MyeventsPageModule)
   },
+
 
 ];
 
