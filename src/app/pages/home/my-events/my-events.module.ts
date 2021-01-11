@@ -8,6 +8,7 @@ import { MyEventsPageRoutingModule } from './my-events-routing.module';
 
 import { MyEventsPage } from './my-events.page';
 import { TabsPageModule } from '../tabs/tabs.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { TabsPageModule } from '../tabs/tabs.module';
     FormsModule,
     IonicModule,
     TabsPageModule,
+    SharedModule,
     MyEventsPageRoutingModule
   ],
   declarations: [MyEventsPage]
