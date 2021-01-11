@@ -29,47 +29,7 @@
               </ion-row>
             </ion-grid>
           </ion-list-header>
-          <ion-card *ngFor="let ev of homeEvents">
-            <ion-card-header>
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    <ion-card-title>
-                      {{ ev.title }}
-                    </ion-card-title>
-                  </ion-col>
-                  <!-- <ion-col>
-                    <ion-label>
-                      {{ ev.status }}
-                    </ion-label>
-                  </ion-col> -->
-                </ion-row>
-                <ion-row class="ion-justify-content-around">
-                  <ion-col size-sm="8">
-                    <ion-label >
-                      <ion-icon name="today" color="danger" style="zoom:1.2;"></ion-icon>
-                      <ion-text>{{ ev.dates }}</ion-text>
-                    </ion-label>
-                  </ion-col>
-                  <ion-col>
-                    <ion-label  class="ion-text-right">
-                      <ion-icon name="location" color="warning" style="zoom:1.4;"></ion-icon>
-                      {{ ev.location.city }}
-                    </ion-label>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-grid>
-                <ion-row>
-                  <ion-text class="tag" *ngFor="let tag of ev.tags">
-                    {{ tag }}
-                  </ion-text>
-                </ion-row>
-              </ion-grid>
-            </ion-card-content>
-          </ion-card>
+          <app-card *ngFor="let event of homeEvents" [event]="event"></app-card>
         </ion-list>
       </ion-col>
     </ion-row>

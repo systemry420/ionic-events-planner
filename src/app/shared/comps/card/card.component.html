@@ -1,0 +1,37 @@
+<ion-card>
+  <ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card-title>
+            {{ event.title }}
+          </ion-card-title>
+        </ion-col>
+       
+      </ion-row>
+      <ion-row class="ion-justify-content-around">
+        <ion-col size-sm="8">
+          <ion-label >
+            <ion-icon name="today" color="danger" style="zoom:1.2;"></ion-icon>
+            <ion-text>{{ event.dates }}</ion-text>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label  class="ion-text-right">
+            <ion-icon name="location" color="warning" style="zoom:1.4;"></ion-icon>
+            {{ event.location.city }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-text class="tag" *ngFor="let tag of event.tags">
+          {{ tag }}
+        </ion-text>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

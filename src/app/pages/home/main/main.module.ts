@@ -9,6 +9,7 @@ import { MainPageRoutingModule } from './main-routing.module';
 import { MainPage } from './main.page';
 import { TabsPageModule } from '../tabs/tabs.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -18,9 +19,10 @@ import { TranslateModule } from '@ngx-translate/core';
     MainPageRoutingModule,
     TabsPageModule,
     TranslateModule,
+    SharedModule,
   ],
   declarations: [
-    MainPage
+    MainPage,
   ]
 })
 export class MainPageModule {}

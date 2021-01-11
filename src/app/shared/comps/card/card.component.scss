@@ -1,0 +1,25 @@
+
+ion-card {
+    ion-card-title {
+        font-size: 1.5em;
+    }
+
+    .info {
+        color: #555;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    ion-icon {
+        margin-right: 5px;
+    }
+    .tag {
+        background-color: lightgray;
+        margin: 0.3em;
+        border-radius: 30px;
+        text-align: center;
+        padding: 0.7em;
+        color: #222;
+        font-size: 0.9em;
+    }
+}
