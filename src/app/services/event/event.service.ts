@@ -31,6 +31,10 @@ export class EventService {
   }
 
   addEvent(title, type, style, occur, dates, location, tags) {
+    this.authService.userSubject.subscribe(user => {
+      this.userId = user.id
+    })
+
     let newEvent = {
       title,
       type,
