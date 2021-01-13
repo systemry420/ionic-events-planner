@@ -1,6 +1,6 @@
 {
   "appId": "com.events.app",
-  "appName": "events-planner",
+  "appName": "events-planner-2021",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
