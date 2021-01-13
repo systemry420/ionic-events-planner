@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {}
 
-  onSignup() {
+  onSignup(form) {
     // this.user = {id: this.userID, ...this.user}
     this.user['id'] = this.userID
     this.userService.submitUserData(this.userID, this.user)
